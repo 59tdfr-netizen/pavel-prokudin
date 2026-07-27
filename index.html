@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pavel Prokudin — contemporary fiction writer. Issue 01." />
+  <title id="pageTitle">Павел Прокудин — Issue 01</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Павел Прокудин — Issue 01" />
+  <meta property="og:description" content="Писатель тёплых, смешных историй об обычных людях, неожиданных моментах и человеческой близости." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ваш-сайт.ru" />
+  <meta property="og:image" content="https://ваш-сайт.ru/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- ШРИФТЫ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Inter:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Instrument+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Языковой переключатель -->
+  <nav class="lang-nav" aria-label="Language">
+    <button type="button" class="lang-btn is-active" data-lang="ru" aria-pressed="true">RU</button>
+    <span class="lang-divider" aria-hidden="true">|</span>
+    <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+  </nav>
+
+  <!-- Переключатель темы -->
+  <button type="button" class="theme-toggle" aria-label="Переключить тему" title="Тёмная/светлая тема">🌙</button>
+
+  <!-- Гамбургер -->
+  <button type="button" class="hamburger" aria-label="Открыть меню" aria-expanded="false">
+    <span class="hamburger__line"></span>
+    <span class="hamburger__line"></span>
+    <span class="hamburger__line"></span>
+  </button>
+
+  <!-- Мобильное меню -->
+  <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul class="mobile-menu__list">
+      <li><a href="#contents"><span class="lang-ru">Содержание</span><span class="lang-en">Contents</span></a></li>
+      <li><a href="#about"><span class="lang-ru">Обо мне</span><span class="lang-en">About</span></a></li>
+      <li><a href="#what-to-read"><span class="lang-ru">Что почитать?</span><span class="lang-en">What to read?</span></a></li>
+      <li><a href="#blog"><span class="lang-ru">Блог</span><span class="lang-en">Blog</span></a></li>
+      <li><a href="#correspondence"><span class="lang-ru">Корреспонденция</span><span class="lang-en">Correspondence</span></a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="hero" class="section hero fade-in">
+      <div class="hero__inner">
+        <p class="issue-label">Issue 01</p>
+        <h1 class="hero__name">
+          <span class="lang-ru">Павел Прокудин</span>
+          <span class="lang-en">Pavel Prokudin</span>
+        </h1>
+        <p class="hero__tagline lang-ru">
+          Писатель тёплых, смешных историй<br />
+          об обычных людях,<br />
+          неожиданных моментах<br />
+          и человеческой близости.
+        </p>
+        <p class="hero__tagline lang-en">
+          Writer of warm, funny stories<br />
+          about ordinary people,<br />
+          unexpected moments<br />
+          and human connection.
+        </p>
+        <a href="#contents" class="hero__cta">
+          <span class="hero__arrow" aria-hidden="true">↓</span>
+          <span class="lang-ru">Читать выпуск</span>
+          <span class="lang-en">Read the issue</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ОГЛАВЛЕНИЕ -->
+    <section id="contents" class="section contents fade-in">
+      <div class="section__inner">
+        <h2 class="section__title lang-ru">Содержание</h2>
+        <h2 class="section__title lang-en">Contents</h2>
+        <ol class="toc">
+          <li class="toc__item"><a href="#about" class="toc__link"><span class="toc__num">01</span><span class="lang-ru">Обо мне</span><span class="lang-en">About</span></a></li>
+          <li class="toc__item"><a href="#what-to-read" class="toc__link"><span class="toc__num">02</span><span class="lang-ru">Что почитать?</span><span class="lang-en">What to read?</span></a></li>
+          <li class="toc__item"><a href="#blog" class="toc__link"><span class="toc__num">03</span><span class="lang-ru">Блог</span><span class="lang-en">Blog</span></a></li>
+          <li class="toc__item"><a href="#correspondence" class="toc__link"><span class="toc__num">04</span><span class="lang-ru">Корреспонденция</span><span class="lang-en">Correspondence</span></a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ОБО МНЕ -->
+    <section id="about" class="section about fade-in">
+      <div class="section__inner">
+        <header class="section__header">
+          <span class="section__num">01</span>
+          <h2 class="section__title lang-ru">Обо мне</h2>
+          <h2 class="section__title lang-en">About</h2>
+        </header>
+        <div class="about__layout">
+          <figure class="about__photo">
+            <img src="assets/photo.jpg" alt="Pavel Prokudin" width="480" height="640" loading="lazy" onerror="this.onerror=null;this.src='assets/photo.svg'" />
+          </figure>
+          <div class="about__interview">
+            <article class="qa">
+              <p class="qa__question lang-ru">Кто вы как писатель?</p>
+              <p class="qa__question lang-en">Who are you as a writer?</p>
+              <p class="qa__answer lang-ru">Я пишу о людях, которых можно встретить в соседнем подъезде, на работе или в очереди. Мне интересны не громкие события, а тихие повороты — момент, когда кто-то вдруг понимает, что ему не всё равно.</p>
+              <p class="qa__answer lang-en">I write about people you might meet in a neighboring stairwell, at work, or in a queue. I'm drawn not to loud events but to quiet turns — the moment when someone suddenly realizes they care.</p>
+            </article>
+            <article class="qa">
+              <p class="qa__question lang-ru">О чём ваши тексты?</p>
+              <p class="qa__question lang-en">What are your stories about?</p>
+              <p class="qa__answer lang-ru">О доме, который нужно найти. О свободе, которая не всегда выглядит как победа. О смешных и неловких способах, которыми люди пытаются быть ближе друг к другу.</p>
+              <p class="qa__answer lang-en">About finding a home. About freedom that doesn't always look like victory. About the funny, awkward ways people try to be close to one another.</p>
+            </article>
+            <article class="qa">
+              <p class="qa__question lang-ru">Откуда берутся истории?</p>
+              <p class="qa__question lang-en">Where do stories come from?</p>
+              <p class="qa__answer lang-ru">Из наблюдений. Из разговоров, которые слышишь наполовину. Из странных деталей городской жизни — ямы между домами, официанты, которые помнят ваш заказ, дороги, построенные чужими руками.</p>
+              <p class="qa__answer lang-en">From observation. From conversations overheard halfway. From strange details of city life — sinkholes between buildings, waiters who remember your order, roads built by someone else's hands.</p>
+            </article>
+            <article class="qa">
+              <p class="qa__question lang-ru">Что для вас важно в прозе?</p>
+              <p class="qa__question lang-en">What matters to you in prose?</p>
+              <p class="qa__answer lang-ru">Тепло без сиропа. Юмор без насмешки. Точность без холодности. Я хочу, чтобы читатель узнал себя — и улыбнулся, и немного задумался.</p>
+              <p class="qa__answer lang-en">Warmth without syrup. Humor without mockery. Precision without coldness. I want the reader to recognize themselves — and smile, and pause for a moment.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ЧТО ПОЧИТАТЬ? -->
+    <section id="what-to-read" class="section what-to-read fade-in">
+      <div class="section__inner">
+        <header class="section__header">
+          <span class="section__num">02</span>
+          <h2 class="section__title lang-ru">Что почитать?</h2>
+          <h2 class="section__title lang-en">What to read?</h2>
+        </header>
+
+        <!-- Произведение 1 -->
+        <article class="work">
+          <div class="work__header">
+            <span class="work__index">1</span>
+            <div class="work__meta">
+              <h3 class="work__title lang-ru">Как понравиться вашему официанту</h3>
+              <h3 class="work__title lang-en">How to Win Over Your Waiter</h3>
+              <p class="work__genre lang-ru">Роман</p>
+              <p class="work__genre lang-en">Novel</p>
+            </div>
+          </div>
+          <p class="work__desc lang-ru">Взросление через поиск дома, свободы и людей, с которыми хочется остаться.</p>
+          <p class="work__desc lang-en">A coming-of-age novel about finding a home, freedom, and the people you want to stay with.</p>
+          <p class="work__status lang-ru">Ищет издателя.</p>
+          <p class="work__status lang-en">Currently seeking publication.</p>
+          <button type="button" class="work__toggle" aria-expanded="false">
+            <span class="lang-ru">Открыть</span>
+            <span class="lang-en">Open</span> <span aria-hidden="true">→</span>
+          </button>
+          <div class="work__details" hidden>
+            <p class="lang-ru">Главный герой учится жить среди чужих людей — и понимает, что «свои» не всегда те, к кому ты близок по крови. Ресторан, где он подрабатывает официантом, становится местом, где складываются настоящие связи.</p>
+            <p class="lang-en">The protagonist learns to live among strangers — and discovers that "your people" aren't always those you're related to by blood. The restaurant where he waiters becomes the place where real connections form.</p>
+          </div>
+        </article>
+
+        <hr class="divider" />
+
+        <!-- Произведение 2 -->
+        <article class="work">
+          <div class="work__header">
+            <span class="work__index">2</span>
+            <div class="work__meta">
+              <h3 class="work__title">Дело Труба</h3>
+              <p class="work__genre lang-ru">Рассказ</p>
+              <p class="work__genre lang-en">Short story</p>
+            </div>
+          </div>
+          <p class="work__desc lang-ru">Жилищная комедия о провале между домами, который неожиданно превращается в озеро. Жильцы объединяются, чтобы защитить это маленькое чудо от городской администрации.</p>
+          <p class="work__desc lang-en">A housing comedy about a sinkhole between apartment buildings that unexpectedly becomes a natural lake. Residents unite to protect this small miracle from the city administration.</p>
+          <p class="work__status lang-ru">
+            Опубликовано в журнале
+            <a href="https://unost.org/news/soderzhanie-iyulskogo-nomera-zhurnala-yunost-6/" target="_blank" rel="noopener noreferrer" class="btn btn--small">«Юность»</a>
+          </p>
+          <p class="work__status lang-en">
+            Published in literary magazine
+            <a href="https://unost.org/news/soderzhanie-iyulskogo-nomera-zhurnala-yunost-6/" target="_blank" rel="noopener noreferrer" class="btn btn--small">"Yunost"</a>
+          </p>
+          <button type="button" class="work__toggle" aria-expanded="false">
+            <span class="lang-ru">Открыть</span>
+            <span class="lang-en">Open</span> <span aria-hidden="true">→</span>
+          </button>
+          <div class="work__details" hidden>
+            <p class="lang-ru">История о том, как общее дело может родиться из бытовой катастрофы — и как сообщество, которое вчера ещё ругалось из-за парковки, сегодня стоит плечом к плечу.</p>
+            <p class="lang-en">A story about how a shared cause can emerge from a domestic catastrophe — and how a community that argued over parking yesterday stands shoulder to shoulder today.</p>
+          </div>
+        </article>
+
+        <hr class="divider" />
+
+        <!-- Произведение 3 -->
+        <article class="work">
+          <div class="work__header">
+            <span class="work__index">3</span>
+            <div class="work__meta">
+              <h3 class="work__title">Обратная геодезическая задача</h3>
+              <p class="work__genre lang-ru">Рассказ</p>
+              <p class="work__genre lang-en">Short story</p>
+            </div>
+          </div>
+          <p class="work__desc lang-ru">Студент начинает стажировку, ожидая освоить профессию, но вместо этого начинает искать своё призвание среди дорог, построенных чужими руками.</p>
+          <p class="work__desc lang-en">A student begins an internship expecting to learn a profession, but instead starts searching for his life's calling while surrounded by roads built by others.</p>
+          <p class="work__status lang-ru">
+            Опубликовано в независимой газете
+            <a href="https://t.me/kontrgazeta_nalet" target="_blank" rel="noopener noreferrer" class="btn btn--small">«НАЛЁТ»</a>
+          </p>
+          <p class="work__status lang-en">
+            Published in independent newspaper
+            <a href="https://t.me/kontrgazeta_nalet" target="_blank" rel="noopener noreferrer" class="btn btn--small">"NALET"</a>
+          </p>
+          <button type="button" class="work__toggle" aria-expanded="false">
+            <span class="lang-ru">Открыть</span>
+            <span class="lang-en">Open</span> <span aria-hidden="true">→</span>
+          </button>
+          <div class="work__details" hidden>
+            <p class="lang-ru">Рассказ о профессии как форме взросления — и о том, что иногда путь к себе лежит не через карьерный план, а через внимание к чужому труду.</p>
+            <p class="lang-en">A story about profession as a form of growing up — and how the path to yourself sometimes runs not through a career plan but through attention to someone else's labor.</p>
+          </div>
+        </article>
+
+        <hr class="divider" />
+
+        <!-- Шорт-лист CWS -->
+        <div class="archive__entry" style="margin-top: 2rem;">
+          <span class="archive__year">2025</span>
+          <div class="archive__content">
+            <p class="archive__source lang-ru">
+              Школа авторов (CWS) – шорт-лист
+              <br>
+              <a href="https://litschool.pro/news/podveli-itogi-konkursa-stipendij-v-literaturnye-masterskie-2/" target="_blank" rel="noopener noreferrer" class="btn btn--small">Конкурс стипендий</a>
+              <a href="https://litschool.pro/news/creative-writing-school-podvela-itogi-konkursa-ptichij-yazyk/" target="_blank" rel="noopener noreferrer" class="btn btn--small">Конкурс «Птичий язык»</a>
+            </p>
+            <p class="archive__source lang-en">
+              Creative Writing School (CWS) – shortlisted
+              <br>
+              <a href="https://litschool.pro/news/podveli-itogi-konkursa-stipendij-v-literaturnye-masterskie-2/" target="_blank" rel="noopener noreferrer" class="btn btn--small">Scholarship Contest</a>
+              <a href="https://litschool.pro/news/creative-writing-school-podvela-itogi-konkursa-ptichij-yazyk/" target="_blank" rel="noopener noreferrer" class="btn btn--small">"Bird Language" Contest</a>
+            </p>
+            <p class="archive__title lang-ru">Мастерская современной драматургии</p>
+            <p class="archive__title lang-en">Contemporary Drama Workshop</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- БЛОГ -->
+    <section id="blog" class="section blog fade-in">
+      <div class="section__inner">
+        <header class="section__header">
+          <span class="section__num">03</span>
+          <h2 class="section__title lang-ru">Блог</h2>
+          <h2 class="section__title lang-en">Blog</h2>
+        </header>
+        <div class="blog__intro">
+          <p class="lang-ru">Над чем я работаю и чем занимаюсь – ищите в блоге:</p>
+          <p class="lang-en">What I'm working on and doing – follow my blog:</p>
+        </div>
+        <div class="blog__links">
+          <a href="https://vk.ru/pvmgorode" target="_blank" rel="noopener noreferrer" class="btn btn--large">ВКонтакте</a>
+          <a href="https://t.me/pvmgorode" target="_blank" rel="noopener noreferrer" class="btn btn--large">Telegram</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- КОРРЕСПОНДЕНЦИЯ -->
+    <section id="correspondence" class="section correspondence fade-in">
+      <div class="section__inner">
+        <header class="section__header">
+          <span class="section__num">04</span>
+          <h2 class="section__title lang-ru">Корреспонденция</h2>
+          <h2 class="section__title lang-en">Correspondence</h2>
+        </header>
+        <p class="correspondence__thanks lang-ru">Спасибо, что прочитали этот выпуск.</p>
+        <p class="correspondence__thanks lang-en">Thank you for reading this issue.</p>
+        <p class="correspondence__intro lang-ru">По вопросам публикации,<br />перевода<br />или сотрудничества</p>
+        <p class="correspondence__intro lang-en">For publication,<br />translation<br />or collaboration</p>
+        <p class="correspondence__cta lang-ru">Написать письмо</p>
+        <p class="correspondence__cta lang-en">Write a letter</p>
+        <div class="correspondence__emails">
+          <div class="correspondence__email lang-ru">
+            <span class="correspondence__lang-tag">RU</span>
+            <a href="mailto:pavel.prokudin18@yandex.ru">pavel.prokudin18@yandex.ru</a>
+          </div>
+          <div class="correspondence__email lang-en">
+            <span class="correspondence__lang-tag">EN</span>
+            <a href="mailto:59tdfr@gmail.com">59tdfr@gmail.com</a>
+          </div>
+        </div>
+        <footer class="site-footer">
+          <p>Issue 01 · Pavel Prokudin</p>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- КНОПКА "НАВЕРХ" -->
+  <button id="back-to-top" class="back-to-top" aria-label="Наверх" title="Наверх">
+    ↑
+  </button>
+
+  <!-- Яндекс.Метрика (временно закомментирована до получения номера счётчика) -->
+  <!--
+  <script type="text/javascript" >
+     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+     m[i].l=1*new Date();
+     for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+     ym(XXXXXX, "init", {
+          clickmap:true,
+          trackLinks:true,
+          accurateTrackBounce:true,
+          webvisor:true
+     });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  -->
+
+  <script src="script.js"></script>
+</body>
+</html>
