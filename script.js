@@ -15,13 +15,18 @@ document.addEventListener('DOMContentLoaded', function() {
       activeBtn.setAttribute('aria-pressed', 'true');
     }
 
-    if (lang === 'ru') {
-      body.classList.remove('lang-en');
-      body.classList.add('lang-ru');
-    } else {
-      body.classList.remove('lang-ru');
-      body.classList.add('lang-en');
-    }
+    // Добавляем класс для плавного переключения
+    body.classList.add('switching');
+    setTimeout(() => {
+      if (lang === 'ru') {
+        body.classList.remove('lang-en');
+        body.classList.add('lang-ru');
+      } else {
+        body.classList.remove('lang-ru');
+        body.classList.add('lang-en');
+      }
+      body.classList.remove('switching');
+    }, 50);
 
     const titleEl = document.getElementById('pageTitle');
     if (titleEl) {
@@ -132,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
   fadeElements.forEach((el, index) => {
     setTimeout(() => {
       el.classList.add('visible');
-    }, 200 + index * 150);
+    }, 150 + index * 120); // немного сократил задержку, но сама анимация стала длиннее
   });
 
 });
