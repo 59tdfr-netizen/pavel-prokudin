@@ -423,9 +423,8 @@ img {
   font-weight: 400;
   color: var(--secondary);
   line-height: 1.7;
-  margin: 1rem 0 2rem; /* уменьшил нижний отступ, чтобы отделить кнопку */
+  margin: 1rem 0 2rem;
 }
-/* Кнопка "Читать выпуск" — отделяем от текста */
 .hero__cta {
   display: inline-block;
   font-weight: 500;
@@ -437,7 +436,7 @@ img {
   transition: background 0.3s ease, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   letter-spacing: 0.02em;
   font-size: 1.1rem;
-  margin-top: 0.5rem; /* дополнительный отступ сверху */
+  margin-top: 0.5rem;
 }
 .hero__cta:hover {
   background: color-mix(in srgb, var(--accent) 80%, black 20%);
@@ -583,43 +582,6 @@ img {
   margin: 3.5rem 0;
 }
 
-/* Архив */
-.archive__entry {
-  display: flex;
-  gap: 1.5rem;
-  margin: 1.4rem 0;
-  flex-wrap: wrap;
-}
-.archive__year {
-  font-weight: 400;
-  min-width: 60px;
-  color: var(--secondary);
-  font-size: 1.1rem;
-}
-.archive__content {
-  flex: 1;
-}
-.archive__source {
-  font-weight: 500;
-  font-size: 1.05rem;
-  color: var(--text);
-}
-.archive__title {
-  font-style: italic;
-  font-size: 1.2rem;
-  color: var(--text);
-}
-.archive__type {
-  font-size: 0.9rem;
-  color: var(--secondary);
-}
-.archive__category {
-  font-weight: 500;
-  font-size: 1.1rem;
-  color: var(--text);
-  margin: 2rem 0 0.5rem;
-}
-
 /* БЛОГ */
 .blog__intro {
   font-size: 1.2rem;
@@ -650,25 +612,34 @@ img {
 }
 .correspondence__emails {
   margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 .correspondence__email {
-  margin: 0.6rem 0;
-  font-size: 1.1rem;
+  margin: 0;
 }
-.correspondence__email a {
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s ease;
-}
-.correspondence__email a:hover {
-  border-color: var(--accent);
-}
-.correspondence__lang-tag {
-  font-weight: 400;
-  min-width: 30px;
+.correspondence__email a.email-link {
   display: inline-block;
-  color: var(--secondary);
+  padding: 0.6rem 1.2rem;
+  background: var(--btn-bg);
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--lines);
+  cursor: pointer;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+.correspondence__email a.email-link:hover {
+  background: color-mix(in srgb, var(--btn-bg) 80%, black 20%);
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px var(--shadow-strong);
+}
+body.dark-mode .correspondence__email a.email-link {
+  border-color: var(--lines);
 }
 .site-footer {
   margin-top: 4.5rem;
@@ -789,5 +760,10 @@ img {
   .hero__cta {
     font-size: 1rem;
     padding: 0.6rem 1.8rem;
+  }
+
+  .correspondence__email a.email-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 }
