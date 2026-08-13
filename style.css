@@ -1,0 +1,769 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #F6F1E8;
+  --text: #34302C;
+  --secondary: #6E665E;
+  --lines: #D6CDC2;
+  --accent: #6A7B5B;
+  --card-bg: #ffffff;
+  --btn-bg: #D6CDC2;
+  --shadow: rgba(52, 48, 44, 0.08);
+  --shadow-strong: rgba(52, 48, 44, 0.15);
+  --floating-bg: rgba(255, 255, 255, 0.7);
+  --floating-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+body.dark-mode {
+  --bg: #1E1E1E;
+  --text: #E8E1D6;
+  --secondary: #A89F94;
+  --lines: #4A4540;
+  --accent: #8A9B7B;
+  --card-bg: #2A2A2A;
+  --btn-bg: #4A4540;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --shadow-strong: rgba(0, 0, 0, 0.5);
+  --floating-bg: rgba(0, 0, 0, 0.6);
+  --floating-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+body {
+  font-size: 18px;
+  background: var(--bg);
+  color: var(--text);
+  padding: 80px 20px 40px;
+  line-height: 1.7;
+  transition: background 0.5s ease, color 0.5s ease;
+  overflow-x: hidden;
+}
+
+/* ---------- ШРИФТЫ ПО ЯЗЫКАМ ---------- */
+body.lang-ru {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+body.lang-ru h1, body.lang-ru h2, body.lang-ru h3,
+body.lang-ru .hero__name, body.lang-ru .section__title,
+body.lang-ru .work__title, body.lang-ru .correspondence__thanks,
+body.lang-ru .archive__title {
+  font-family: 'Literata', serif;
+}
+body.lang-ru .mono, body.lang-ru .issue-label, body.lang-ru .section__num,
+body.lang-ru .work__index, body.lang-ru .work__genre, body.lang-ru .toc__num,
+body.lang-ru .archive__year, body.lang-ru .correspondence__lang-tag,
+body.lang-ru .site-footer, body.lang-ru .lang-nav {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+body.lang-en {
+  font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+body.lang-en h1, body.lang-en h2, body.lang-en h3,
+body.lang-en .hero__name, body.lang-en .section__title,
+body.lang-en .work__title, body.lang-en .correspondence__thanks,
+body.lang-en .archive__title {
+  font-family: 'Newsreader', serif;
+}
+body.lang-en .mono, body.lang-en .issue-label, body.lang-en .section__num,
+body.lang-en .work__index, body.lang-en .work__genre, body.lang-en .toc__num,
+body.lang-en .archive__year, body.lang-en .correspondence__lang-tag,
+body.lang-en .site-footer, body.lang-en .lang-nav {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* ---------- FADE-IN (улучшенная) ---------- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ---------- ОБЩИЕ ПРАВИЛА ДЛЯ ПЛАВАЮЩИХ ЭЛЕМЕНТОВ ---------- */
+.lang-nav,
+.hamburger,
+.theme-toggle,
+.back-to-top {
+  transition: opacity 0.4s ease, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background 0.3s ease, box-shadow 0.3s ease;
+  color: var(--text);
+}
+
+body.scrolled .lang-nav,
+body.scrolled .hamburger,
+body.scrolled .theme-toggle {
+  opacity: 0.35;
+}
+body.scrolled .back-to-top.visible {
+  opacity: 0.35;
+}
+
+.lang-nav:hover,
+.hamburger:hover,
+.theme-toggle:hover,
+.back-to-top:hover,
+.lang-nav:focus,
+.hamburger:focus,
+.theme-toggle:focus,
+.back-to-top:focus,
+.lang-nav:active,
+.hamburger:active,
+.theme-toggle:active,
+.back-to-top:active {
+  opacity: 1 !important;
+  transform: scale(1.05);
+}
+
+/* ---------- ЯЗЫКОВОЙ ПЕРЕКЛЮЧАТЕЛЬ ---------- */
+.lang-nav {
+  position: fixed;
+  top: 24px;
+  right: 30px;
+  z-index: 1001;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: var(--floating-bg);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: var(--floating-shadow);
+}
+.lang-btn {
+  background: none;
+  border: none;
+  font: inherit;
+  color: var(--secondary);
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 0.3s ease;
+}
+.lang-btn.is-active {
+  color: var(--text);
+  font-weight: 500;
+}
+.lang-divider {
+  color: var(--lines);
+  margin: 0 4px;
+}
+
+/* ---------- ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ ---------- */
+.theme-toggle {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 1001;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--floating-bg);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: var(--floating-shadow);
+  color: var(--text);
+  line-height: 1;
+}
+.theme-toggle:hover {
+  transform: scale(1.1) rotate(10deg);
+  background: var(--btn-bg);
+}
+
+/* ---------- ГАМБУРГЕР ---------- */
+.hamburger {
+  position: fixed;
+  top: 24px;
+  left: 30px;
+  z-index: 1000;
+  background: var(--floating-bg);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: var(--floating-shadow);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+.hamburger__line {
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.3s ease;
+}
+
+/* ---------- МОБИЛЬНОЕ МЕНЮ (плавное появление) ---------- */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100vh;
+  background: var(--card-bg);
+  box-shadow: -8px 0 30px var(--shadow);
+  transition: right 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.6s ease;
+  z-index: 999;
+  padding: 100px 30px 30px;
+  opacity: 0;
+}
+.mobile-menu[aria-hidden="false"] {
+  right: 0;
+  opacity: 1;
+}
+.mobile-menu__list {
+  list-style: none;
+}
+.mobile-menu__list li {
+  margin: 1.8rem 0;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.mobile-menu[aria-hidden="false"] .mobile-menu__list li {
+  opacity: 1;
+  transform: translateX(0);
+}
+.mobile-menu__list li:nth-child(1) { transition-delay: 0.1s; }
+.mobile-menu__list li:nth-child(2) { transition-delay: 0.15s; }
+.mobile-menu__list li:nth-child(3) { transition-delay: 0.2s; }
+.mobile-menu__list li:nth-child(4) { transition-delay: 0.25s; }
+.mobile-menu__list li:nth-child(5) { transition-delay: 0.3s; }
+
+.mobile-menu__list a {
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease;
+}
+.mobile-menu__list a:hover {
+  text-decoration: underline;
+  color: var(--accent);
+}
+
+/* ---------- ЯЗЫКОВАЯ ВИДИМОСТЬ (простое переключение, без изменения отступов) ---------- */
+.lang-ru, .lang-en {
+  /* Оба языка по умолчанию видны, но JS переключит display */
+}
+body.lang-ru .lang-en {
+  display: none;
+}
+body.lang-en .lang-ru {
+  display: none;
+}
+/* Убедимся, что активный язык отображается корректно */
+body.lang-ru .lang-ru,
+body.lang-en .lang-en {
+  display: block;
+}
+/* Для строчных элементов */
+body.lang-ru span.lang-ru,
+body.lang-en span.lang-en,
+body.lang-ru a.lang-ru,
+body.lang-en a.lang-en {
+  display: inline;
+}
+
+/* ---------- КНОПКА "НАВЕРХ" ---------- */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 48px;
+  height: 48px;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--floating-bg);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: var(--floating-shadow);
+  color: var(--text);
+  border-radius: 50%;
+  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              visibility 0.5s ease,
+              transform 0.3s ease,
+              background 0.3s ease;
+  transform: scale(0.8);
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+body.scrolled .back-to-top.visible {
+  opacity: 0.35;
+}
+.back-to-top:hover {
+  opacity: 1 !important;
+  transform: scale(1.1);
+  background: var(--btn-bg);
+}
+
+/* ---------- ФОТО И ВСЕ ИЗОБРАЖЕНИЯ ---------- */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.about__photo img {
+  filter: grayscale(100%);
+  transition: filter 0.6s ease, transform 0.3s ease;
+}
+.about__photo img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.02);
+}
+
+/* ---------- КНОПКИ-ССЫЛКИ ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  background: var(--btn-bg);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.95rem;
+  transition: background 0.3s ease, transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin: 0.15rem 0.15rem 0.15rem 0;
+}
+.btn:hover {
+  background: color-mix(in srgb, var(--btn-bg) 80%, black 20%);
+  transform: scale(1.05);
+}
+.btn--small {
+  font-size: 0.8rem;
+  padding: 0.15rem 0.6rem;
+}
+.btn--large {
+  font-size: 1.1rem;
+  padding: 0.5rem 1.3rem;
+  margin-right: 0.5rem;
+}
+
+/* ---------- ОБЩИЕ СТИЛИ ДЛЯ СЕКЦИЙ ---------- */
+.section {
+  max-width: 1000px;
+  margin: 0 auto 80px;
+  overflow: hidden;
+}
+.section__inner {
+  padding: 0 10px;
+}
+.section__header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--lines);
+  padding-bottom: 0.5rem;
+}
+.section__num {
+  font-size: 0.9rem;
+  color: var(--secondary);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+.section__title {
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+/* HERO */
+.hero {
+  padding: 40px 0;
+}
+.hero__inner {
+  text-align: center;
+}
+.issue-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+.hero__name {
+  font-size: 4.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0.5rem 0 1rem;
+  color: var(--text);
+}
+.hero__tagline {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--secondary);
+  line-height: 1.7;
+  margin: 1rem 0 2rem;
+}
+.hero__cta {
+  display: inline-block;
+  font-weight: 500;
+  padding: 0.8rem 2.2rem;
+  background: var(--accent);
+  color: var(--bg);
+  border-radius: 40px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  letter-spacing: 0.02em;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+.hero__cta:hover {
+  background: color-mix(in srgb, var(--accent) 80%, black 20%);
+  transform: scale(1.05);
+}
+.hero__arrow {
+  margin-right: 0.5rem;
+}
+
+/* ОГЛАВЛЕНИЕ */
+.toc {
+  list-style: none;
+  padding: 0;
+}
+.toc__item {
+  margin: 1.4rem 0;
+}
+.toc__link {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 1.3rem;
+  font-weight: 400;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+.toc__link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.toc__num {
+  font-weight: 400;
+  color: var(--secondary);
+  margin-right: 1rem;
+}
+
+/* ОБО МНЕ */
+.about__layout {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.about__photo {
+  flex: 0 0 280px;
+  max-width: 100%;
+}
+.about__photo img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px var(--shadow);
+}
+.about__interview {
+  flex: 1;
+  min-width: 260px;
+}
+.qa {
+  margin-bottom: 2.2rem;
+}
+.qa__question {
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+}
+.qa__answer {
+  font-weight: 400;
+  color: var(--secondary);
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+/* ЧТО ПОЧИТАТЬ? */
+.work {
+  margin: 2.8rem 0;
+}
+.work__header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.3rem;
+}
+.work__index {
+  font-size: 1.3rem;
+  color: var(--lines);
+}
+.work__meta {
+  flex: 1;
+}
+.work__title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text);
+}
+.work__genre {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--secondary);
+  margin: 0.1rem 0;
+}
+.work__desc {
+  color: var(--secondary);
+  margin: 0.6rem 0;
+  font-size: 1.05rem;
+}
+.work__status {
+  font-size: 1rem;
+  color: var(--secondary);
+  margin: 0.4rem 0;
+}
+.work__toggle {
+  background: none;
+  border: 1px solid var(--lines);
+  padding: 0.25rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+  color: var(--text);
+}
+.work__toggle:hover {
+  background: var(--btn-bg);
+}
+.work__details {
+  margin-top: 0.8rem;
+  padding: 1.2rem;
+  background: var(--card-bg);
+  border-radius: 8px;
+  color: var(--text);
+  line-height: 1.8;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.divider {
+  border: none;
+  border-top: 1px solid var(--lines);
+  margin: 2.2rem 0;
+}
+.divider--wide {
+  margin: 3.5rem 0;
+}
+
+/* БЛОГ */
+.blog__intro {
+  font-size: 1.2rem;
+  color: var(--secondary);
+}
+.blog__links {
+  margin-top: 1.5rem;
+}
+
+/* КОРРЕСПОНДЕНЦИЯ */
+.correspondence__thanks {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 1.5rem 0;
+  color: var(--text);
+}
+.correspondence__intro {
+  font-size: 1.2rem;
+  color: var(--secondary);
+  line-height: 1.7;
+  margin: 0.5rem 0;
+}
+.correspondence__cta {
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: var(--text);
+  margin: 0.5rem 0;
+}
+.correspondence__emails {
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.correspondence__email {
+  margin: 0;
+}
+.correspondence__email a.email-link {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: var(--btn-bg);
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--lines);
+  cursor: pointer;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+.correspondence__email a.email-link:hover {
+  background: color-mix(in srgb, var(--btn-bg) 80%, black 20%);
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px var(--shadow-strong);
+}
+body.dark-mode .correspondence__email a.email-link {
+  border-color: var(--lines);
+}
+.site-footer {
+  margin-top: 4.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--lines);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--secondary);
+  letter-spacing: 0.05em;
+}
+
+/* ---------- АДАПТИВНОСТЬ ---------- */
+@media (max-width: 768px) {
+  body {
+    padding: 100px 15px 30px;
+    font-size: 17px;
+    overflow-x: hidden;
+  }
+
+  .theme-toggle {
+    bottom: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .hero__name {
+    font-size: 2.8rem !important;
+  }
+  .hero__tagline {
+    font-size: 1.1rem;
+  }
+  .section__title {
+    font-size: 1.8rem !important;
+  }
+
+  .about__layout {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about__photo {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .work__title {
+    font-size: 1.3rem;
+  }
+  .work__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+  .work__desc, .work__details {
+    font-size: 1rem;
+  }
+
+  .mobile-menu {
+    width: 240px;
+    padding: 80px 20px 20px;
+  }
+
+  .lang-nav {
+    top: 18px;
+    right: 18px;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+  }
+  .hamburger {
+    top: 18px;
+    left: 18px;
+    padding: 8px 10px;
+  }
+  .hamburger__line {
+    width: 20px;
+  }
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
+    font-size: 1.4rem;
+  }
+
+  .toc__link {
+    font-size: 1.1rem;
+  }
+  .qa__question {
+    font-size: 1.1rem;
+  }
+  .qa__answer {
+    font-size: 1rem;
+  }
+  .correspondence__thanks {
+    font-size: 1.4rem;
+  }
+  .correspondence__intro, .correspondence__cta {
+    font-size: 1.1rem;
+  }
+  .site-footer {
+    font-size: 0.8rem;
+  }
+
+  .section {
+    margin: 0 auto 40px;
+  }
+  .section__header {
+    gap: 0.5rem;
+  }
+  .section__num {
+    font-size: 0.8rem;
+  }
+  .issue-label {
+    font-size: 0.75rem;
+  }
+  .hero__cta {
+    font-size: 1rem;
+    padding: 0.6rem 1.8rem;
+  }
+
+  .correspondence__email a.email-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
