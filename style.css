@@ -411,7 +411,6 @@ img {
   color: var(--secondary);
   margin-bottom: 0.5rem;
 }
-/* НОВЫЙ СТИЛЬ для роли "писатель" */
 .hero__role {
   font-size: 1.3rem;
   font-weight: 400;
@@ -558,7 +557,6 @@ img {
   color: var(--secondary);
   margin: 0.4rem 0;
 }
-/* Кнопки и details удалены, но стили для них не мешают */
 
 /* БЛОГ */
 .blog__intro {
