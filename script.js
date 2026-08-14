@@ -30,9 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const titleEl = document.getElementById('pageTitle');
     if (titleEl) {
       if (lang === 'ru') {
-        titleEl.textContent = 'Павел Прокудин, писатель';
+        titleEl.textContent = 'Павел Прокудин — писатель';
       } else {
-        titleEl.textContent = 'Pavel Prokudin, writer';
+        titleEl.textContent = 'Pavel Prokudin — Writer';
       }
     }
 
@@ -86,29 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ---------- РАСКРЫВАЮЩИЕСЯ БЛОКИ ----------
-  // Кнопок больше нет, но код безопасен
-  document.querySelectorAll('.work__toggle').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const details = this.parentElement.querySelector('.work__details');
-      if (details) {
-        const isHidden = details.hasAttribute('hidden');
-        if (isHidden) {
-          details.removeAttribute('hidden');
-          this.setAttribute('aria-expanded', 'true');
-          const isRussian = body.classList.contains('lang-ru');
-          this.querySelector('span:first-child').textContent = isRussian ? 'Закрыть' : 'Close';
-        } else {
-          details.setAttribute('hidden', '');
-          this.setAttribute('aria-expanded', 'false');
-          const isRussian = body.classList.contains('lang-ru');
-          this.querySelector('span:first-child').textContent = isRussian ? 'Открыть' : 'Open';
-        }
-      }
-    });
-  });
-
-  // ---------- КНОПКА "НАВЕРХ" И КЛАСС SCROLLED ----------
+  // ---------- КНОПКА "НАВЕРХ" ----------
   const backToTopBtn = document.getElementById('back-to-top');
 
   window.addEventListener('scroll', function() {
