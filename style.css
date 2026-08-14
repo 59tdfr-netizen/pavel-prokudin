@@ -52,10 +52,9 @@ body.lang-ru .work__title, body.lang-ru .correspondence__thanks,
 body.lang-ru .archive__title {
   font-family: 'Literata', serif;
 }
-body.lang-ru .mono, body.lang-ru .issue-label, body.lang-ru .section__num,
+body.lang-ru .mono, body.lang-ru .section__num,
 body.lang-ru .work__index, body.lang-ru .work__genre, body.lang-ru .toc__num,
-body.lang-ru .archive__year, body.lang-ru .correspondence__lang-tag,
-body.lang-ru .site-footer, body.lang-ru .lang-nav {
+body.lang-ru .lang-nav {
   font-family: 'IBM Plex Mono', monospace;
 }
 
@@ -68,26 +67,25 @@ body.lang-en .work__title, body.lang-en .correspondence__thanks,
 body.lang-en .archive__title {
   font-family: 'Newsreader', serif;
 }
-body.lang-en .mono, body.lang-en .issue-label, body.lang-en .section__num,
+body.lang-en .mono, body.lang-en .section__num,
 body.lang-en .work__index, body.lang-en .work__genre, body.lang-en .toc__num,
-body.lang-en .archive__year, body.lang-en .correspondence__lang-tag,
-body.lang-en .site-footer, body.lang-en .lang-nav {
+body.lang-en .lang-nav {
   font-family: 'IBM Plex Mono', monospace;
 }
 
-/* ---------- FADE-IN (улучшенная) ---------- */
+/* ---------- FADE-IN ---------- */
 .fade-in {
   opacity: 0;
-  transform: translateY(40px) scale(0.98);
-  transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .fade-in.visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
-/* ---------- ОБЩИЕ ПРАВИЛА ДЛЯ ПЛАВАЮЩИХ ЭЛЕМЕНТОВ ---------- */
+/* ---------- ПЛАВАЮЩИЕ ЭЛЕМЕНТЫ ---------- */
 .lang-nav,
 .hamburger,
 .theme-toggle,
@@ -113,11 +111,7 @@ body.scrolled .back-to-top.visible {
 .lang-nav:focus,
 .hamburger:focus,
 .theme-toggle:focus,
-.back-to-top:focus,
-.lang-nav:active,
-.hamburger:active,
-.theme-toggle:active,
-.back-to-top:active {
+.back-to-top:focus {
   opacity: 1 !important;
   transform: scale(1.05);
 }
@@ -205,11 +199,10 @@ body.scrolled .back-to-top.visible {
   width: 24px;
   height: 2px;
   background: var(--text);
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              opacity 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
-/* ---------- МОБИЛЬНОЕ МЕНЮ (плавное появление) ---------- */
+/* ---------- МОБИЛЬНОЕ МЕНЮ ---------- */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -260,22 +253,17 @@ body.scrolled .back-to-top.visible {
   color: var(--accent);
 }
 
-/* ---------- ЯЗЫКОВАЯ ВИДИМОСТЬ (простое переключение, без изменения отступов) ---------- */
-.lang-ru, .lang-en {
-  /* Оба языка по умолчанию видны, но JS переключит display */
-}
+/* ---------- ЯЗЫКОВАЯ ВИДИМОСТЬ ---------- */
 body.lang-ru .lang-en {
   display: none;
 }
 body.lang-en .lang-ru {
   display: none;
 }
-/* Убедимся, что активный язык отображается корректно */
 body.lang-ru .lang-ru,
 body.lang-en .lang-en {
   display: block;
 }
-/* Для строчных элементов */
 body.lang-ru span.lang-ru,
 body.lang-en span.lang-en,
 body.lang-ru a.lang-ru,
@@ -326,7 +314,7 @@ body.scrolled .back-to-top.visible {
   background: var(--btn-bg);
 }
 
-/* ---------- ФОТО И ВСЕ ИЗОБРАЖЕНИЯ ---------- */
+/* ---------- ФОТО ---------- */
 img {
   max-width: 100%;
   height: auto;
@@ -397,75 +385,76 @@ img {
   color: var(--text);
 }
 
-/* HERO */
+/* ---------- HERO (НОВАЯ КОМПОЗИЦИЯ) ---------- */
 .hero {
-  padding: 40px 0;
+  padding: 20px 0 40px;
 }
 .hero__inner {
-  text-align: center;
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: left;
 }
-.issue-label {
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--secondary);
-  margin-bottom: 0.5rem;
+.hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.hero__name {
+  font-size: 4.2rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0;
 }
 .hero__role {
   font-size: 1.3rem;
   font-weight: 400;
   color: var(--secondary);
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
-}
-.hero__name {
-  font-size: 4.8rem;
-  font-weight: 600;
-  line-height: 1.2;
-  margin: 0.5rem 0 1rem;
-  color: var(--text);
+  letter-spacing: 0.02em;
+  margin: 0.25rem 0 0.5rem;
 }
 .hero__tagline {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 400;
   color: var(--secondary);
-  line-height: 1.7;
-  margin: 1rem 0 2rem;
+  line-height: 1.5;
+  margin: 0.5rem 0 1.5rem;
+  max-width: 600px;
 }
 .hero__cta {
   display: inline-block;
-  font-weight: 500;
-  padding: 0.8rem 2.2rem;
-  background: var(--accent);
-  color: var(--bg);
-  border-radius: 40px;
+  font-weight: 400;
+  padding: 0.6rem 0;
+  background: none;
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
   text-decoration: none;
-  transition: background 0.3s ease, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  letter-spacing: 0.02em;
+  transition: border-color 0.3s ease, color 0.3s ease;
   font-size: 1.1rem;
-  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
 }
 .hero__cta:hover {
-  background: color-mix(in srgb, var(--accent) 80%, black 20%);
-  transform: scale(1.05);
+  border-color: var(--text);
+  color: var(--text);
 }
 .hero__arrow {
-  margin-right: 0.5rem;
+  margin-right: 0.4rem;
 }
 
-/* ОГЛАВЛЕНИЕ */
+/* ---------- ОГЛАВЛЕНИЕ ---------- */
 .toc {
   list-style: none;
   padding: 0;
 }
 .toc__item {
-  margin: 1.4rem 0;
+  margin: 1.2rem 0;
 }
 .toc__link {
   display: inline-block;
   text-decoration: none;
   color: var(--text);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 400;
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s ease, color 0.3s ease;
@@ -480,43 +469,51 @@ img {
   margin-right: 1rem;
 }
 
-/* ОБО МНЕ */
+/* ---------- ОБО МНЕ (ЖУРНАЛЬНАЯ ВЕРСТКА) ---------- */
 .about__layout {
   display: flex;
   gap: 3rem;
-  flex-wrap: wrap;
+  align-items: stretch;
 }
 .about__photo {
-  flex: 0 0 280px;
-  max-width: 100%;
+  flex: 0 0 35%;
+  max-width: 35%;
+  display: flex;
+  align-items: stretch;
 }
 .about__photo img {
   width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px var(--shadow);
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px var(--shadow);
 }
 .about__interview {
   flex: 1;
-  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
 }
 .qa {
-  margin-bottom: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 }
 .qa__question {
   font-weight: 500;
   font-size: 1.2rem;
   color: var(--text);
-  margin-bottom: 0.3rem;
+  letter-spacing: 0.01em;
 }
 .qa__answer {
   font-weight: 400;
   color: var(--secondary);
-  line-height: 1.8;
+  line-height: 1.7;
   font-size: 1.05rem;
+  max-width: 600px;
 }
 
-/* ЧТО ПОЧИТАТЬ? */
+/* ---------- ЧТО ПОЧИТАТЬ? ---------- */
 .work {
   margin: 2.8rem 0;
 }
@@ -525,17 +522,18 @@ img {
   align-items: baseline;
   gap: 1.5rem;
   flex-wrap: wrap;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.2rem;
 }
 .work__index {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--lines);
+  font-weight: 400;
 }
 .work__meta {
   flex: 1;
 }
 .work__title {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin: 0;
   color: var(--text);
@@ -543,39 +541,59 @@ img {
 .work__genre {
   font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--secondary);
   margin: 0.1rem 0;
 }
 .work__desc {
   color: var(--secondary);
-  margin: 0.6rem 0;
-  font-size: 1.05rem;
+  margin: 0.5rem 0 0.3rem;
+  font-size: 1rem;
+  max-width: 650px;
 }
 .work__status {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--secondary);
-  margin: 0.4rem 0;
+  margin: 0.2rem 0;
+}
+.work__link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-weight: 400;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, color 0.3s ease;
+  font-size: 0.95rem;
+}
+.work__link:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+.divider {
+  border: none;
+  border-top: 1px solid var(--lines);
+  margin: 1.5rem 0;
 }
 
-/* БЛОГ */
+/* ---------- БЛОГ ---------- */
 .blog__intro {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--secondary);
 }
 .blog__links {
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
 }
 
-/* КОРРЕСПОНДЕНЦИЯ */
+/* ---------- КОРРЕСПОНДЕНЦИЯ ---------- */
 .correspondence__thanks {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 600;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   color: var(--text);
 }
 .correspondence__intro {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--secondary);
   line-height: 1.7;
   margin: 0.5rem 0;
@@ -584,16 +602,16 @@ img {
   margin: 1.5rem 0;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.8rem;
 }
 .correspondence__email {
   margin: 0;
 }
 .correspondence__email a.email-link {
   display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background: var(--btn-bg);
-  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  background: var(--card-bg);
+  border-radius: 4px;
   color: var(--text);
   text-decoration: none;
   font-family: 'IBM Plex Mono', monospace;
@@ -601,32 +619,29 @@ img {
   transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   border: 1px solid var(--lines);
   cursor: pointer;
-  box-shadow: 0 2px 4px var(--shadow);
+  box-shadow: 0 1px 4px var(--shadow);
 }
 .correspondence__email a.email-link:hover {
-  background: color-mix(in srgb, var(--btn-bg) 80%, black 20%);
+  background: var(--btn-bg);
   transform: scale(1.02);
   box-shadow: 0 4px 12px var(--shadow-strong);
 }
 body.dark-mode .correspondence__email a.email-link {
   border-color: var(--lines);
 }
-.site-footer {
-  margin-top: 4.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--lines);
-  text-align: center;
-  font-size: 0.85rem;
-  color: var(--secondary);
-  letter-spacing: 0.05em;
-}
 
 /* ---------- АДАПТИВНОСТЬ ---------- */
+@media (max-width: 1024px) {
+  .about__photo {
+    flex: 0 0 40%;
+    max-width: 40%;
+  }
+}
+
 @media (max-width: 768px) {
   body {
-    padding: 100px 15px 30px;
+    padding: 80px 15px 30px;
     font-size: 17px;
-    overflow-x: hidden;
   }
 
   .theme-toggle {
@@ -637,29 +652,53 @@ body.dark-mode .correspondence__email a.email-link {
     font-size: 1.2rem;
   }
 
+  /* Hero */
+  .hero__inner {
+    text-align: center;
+  }
+  .hero__name {
+    font-size: 3.2rem;
+  }
   .hero__role {
     font-size: 1.1rem;
   }
-  .hero__name {
-    font-size: 2.8rem !important;
-  }
   .hero__tagline {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .section__title {
-    font-size: 1.8rem !important;
+  .hero__cta {
+    font-size: 1rem;
   }
 
+  /* About — колонка в столбец */
   .about__layout {
     flex-direction: column;
-    align-items: center;
+    gap: 2rem;
   }
   .about__photo {
     flex: 0 0 auto;
+    max-width: 100%;
     width: 100%;
-    max-width: 280px;
+    max-height: 400px;
+  }
+  .about__photo img {
+    height: 100%;
+    max-height: 400px;
+    object-fit: cover;
+  }
+  .about__interview {
+    gap: 1.5rem;
+  }
+  .qa__question {
+    font-size: 1.1rem;
+  }
+  .qa__answer {
+    font-size: 1rem;
   }
 
+  /* Что почитать? */
   .work__title {
     font-size: 1.3rem;
   }
@@ -668,15 +707,15 @@ body.dark-mode .correspondence__email a.email-link {
     align-items: flex-start;
     gap: 0.2rem;
   }
-  .work__desc, .work__details {
+  .work__desc {
     font-size: 1rem;
   }
 
+  /* Мобильное меню */
   .mobile-menu {
     width: 240px;
     padding: 80px 20px 20px;
   }
-
   .lang-nav {
     top: 18px;
     right: 18px;
@@ -702,22 +741,9 @@ body.dark-mode .correspondence__email a.email-link {
   .toc__link {
     font-size: 1.1rem;
   }
-  .qa__question {
-    font-size: 1.1rem;
+  .section__title {
+    font-size: 1.8rem !important;
   }
-  .qa__answer {
-    font-size: 1rem;
-  }
-  .correspondence__thanks {
-    font-size: 1.4rem;
-  }
-  .correspondence__intro {
-    font-size: 1.1rem;
-  }
-  .site-footer {
-    font-size: 0.8rem;
-  }
-
   .section {
     margin: 0 auto 40px;
   }
@@ -727,16 +753,34 @@ body.dark-mode .correspondence__email a.email-link {
   .section__num {
     font-size: 0.8rem;
   }
-  .issue-label {
-    font-size: 0.75rem;
+  .correspondence__thanks {
+    font-size: 1.2rem;
   }
-  .hero__cta {
+  .correspondence__intro {
     font-size: 1rem;
-    padding: 0.6rem 1.8rem;
   }
-
   .correspondence__email a.email-link {
-    padding: 0.5rem 1rem;
     font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero__name {
+    font-size: 2.6rem;
+  }
+  .hero__tagline {
+    font-size: 1rem;
+  }
+  .hero__role {
+    font-size: 1rem;
+  }
+  .about__photo {
+    max-height: 300px;
+  }
+  .about__photo img {
+    max-height: 300px;
   }
 }
