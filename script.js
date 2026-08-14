@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
       activeBtn.setAttribute('aria-pressed', 'true');
     }
 
-    // Добавляем класс для плавного переключения
     body.classList.add('switching');
     setTimeout(() => {
       if (lang === 'ru') {
@@ -31,9 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const titleEl = document.getElementById('pageTitle');
     if (titleEl) {
       if (lang === 'ru') {
-        titleEl.textContent = 'Павел Прокудин — Issue 01';
+        titleEl.textContent = 'Павел Прокудин, писатель';
       } else {
-        titleEl.textContent = 'Pavel Prokudin — Issue 01';
+        titleEl.textContent = 'Pavel Prokudin, writer';
       }
     }
 
@@ -88,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // ---------- РАСКРЫВАЮЩИЕСЯ БЛОКИ ----------
+  // Кнопок больше нет, но код безопасен
   document.querySelectorAll('.work__toggle').forEach(btn => {
     btn.addEventListener('click', function() {
       const details = this.parentElement.querySelector('.work__details');
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
   fadeElements.forEach((el, index) => {
     setTimeout(() => {
       el.classList.add('visible');
-    }, 150 + index * 120); // немного сократил задержку, но сама анимация стала длиннее
+    }, 150 + index * 120);
   });
 
 });
