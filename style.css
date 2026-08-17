@@ -453,7 +453,7 @@ img {
   margin-right: 0.4rem;
 }
 
-/* ---------- КАРТОЧКИ-ФЛИПЫ (ОБНОВЛЁННЫЕ) ---------- */
+/* ---------- КАРТОЧКИ-ФЛИПЫ ---------- */
 .cards-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -504,7 +504,6 @@ img {
   z-index: 1;
 }
 
-/* Лицевая сторона — единое выравнивание */
 .card-front .card-title {
   font-size: 1.5rem;
   font-weight: 600;
@@ -539,7 +538,6 @@ img {
   font-family: 'IBM Plex Mono', monospace;
 }
 
-/* Подпись "Переверни, там текст" — прижимается к низу */
 .card-flip-hint {
   margin-top: auto;
   display: flex;
@@ -563,7 +561,6 @@ img {
   transform: rotate(180deg);
 }
 
-/* Обратная сторона — текст с абзацами и отступами */
 .card-back .card-excerpt {
   flex: 1;
   overflow-y: auto;
@@ -579,7 +576,6 @@ img {
   margin-bottom: 0;
 }
 
-/* Кнопка переворота на обратной стороне */
 .card-flip-btn {
   position: absolute;
   bottom: 0.8rem;
@@ -628,35 +624,60 @@ img {
   transform: scale(1.3);
 }
 
-/* ---------- ОБО МНЕ ---------- */
+/* ---------- ОБО МНЕ (НОВАЯ ВЕРСИЯ) ---------- */
 .about__layout {
   display: flex;
   gap: 3rem;
   align-items: stretch;
+  flex-direction: row-reverse; /* фото слева, текст справа */
 }
-.about__interview {
+.about__photo {
+  flex: 0 0 35%;
+  max-width: 35%;
+  display: flex;
+  align-items: stretch;
+}
+.about__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px var(--shadow);
+  filter: grayscale(100%);
+  transition: filter 0.6s ease;
+}
+.about__photo img:hover {
+  filter: grayscale(0%);
+}
+.about__text {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
+  justify-content: center;
+  text-align: right; /* выравнивание по правому краю */
 }
-.qa {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-.qa__question {
-  font-weight: 500;
-  font-size: 1.2rem;
-  color: var(--text);
-  letter-spacing: 0.01em;
-}
-.qa__answer {
-  font-weight: 400;
-  color: var(--secondary);
-  line-height: 1.7;
-  font-size: 1.05rem;
+.about__text p {
+  margin: 0 0 0.8rem 0;
   max-width: 600px;
+  margin-left: auto; /* прижимаем к правому краю */
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+.about__text p:last-child {
+  margin-bottom: 0;
+}
+.about__arrow-link {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 1.4rem;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.about__arrow-link:hover {
+  color: var(--text);
+  transform: scale(1.2);
 }
 
 /* ---------- БЛОГ ---------- */
@@ -715,6 +736,10 @@ body.dark-mode .correspondence__email a.email-link {
   .card {
     height: 400px;
   }
+  .about__photo {
+    flex: 0 0 40%;
+    max-width: 40%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -763,6 +788,34 @@ body.dark-mode .correspondence__email a.email-link {
     font-size: 1rem;
   }
 
+  /* ОБО МНЕ — мобильная версия */
+  .about__layout {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .about__photo {
+    flex: 0 0 auto;
+    max-width: 100%;
+    width: 100%;
+    max-height: 300px;
+  }
+  .about__photo img {
+    height: 100%;
+    max-height: 300px;
+    object-fit: cover;
+  }
+  .about__text {
+    text-align: center;
+  }
+  .about__text p {
+    max-width: 100%;
+    margin-left: 0;
+    font-size: 1rem;
+  }
+  .about__arrow-link {
+    margin-left: 0.3rem;
+  }
+
   .cards-container {
     display: flex;
     overflow-x: auto;
@@ -785,17 +838,6 @@ body.dark-mode .correspondence__email a.email-link {
   }
   .carousel-dots {
     display: flex;
-  }
-
-  .about__layout {
-    flex-direction: column;
-    gap: 2rem;
-  }
-  .qa__question {
-    font-size: 1.1rem;
-  }
-  .qa__answer {
-    font-size: 1rem;
   }
 
   .mobile-menu {
@@ -879,6 +921,12 @@ body.dark-mode .correspondence__email a.email-link {
     max-height: 220px;
   }
   .hero__photo img {
+    max-height: 220px;
+  }
+  .about__photo {
+    max-height: 220px;
+  }
+  .about__photo img {
     max-height: 220px;
   }
 }
