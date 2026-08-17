@@ -122,53 +122,89 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // ---------- КАРУСЕЛЬ: ИНДИКАТОРЫ ----------
+  // ---------- КАРУСЕЛЬ: СТРЕЛКИ ----------
   const container = document.querySelector('.cards-container');
+  const prevBtn = document.getElementById('prevArrow');
+  const nextBtn = document.getElementById('nextArrow');
   const dotsContainer = document.getElementById('carouselDots');
 
-  if (container && dotsContainer) {
-    const cardCount = container.querySelectorAll('.card').length;
-    const dots = [];
-
-    for (let i = 0; i < cardCount; i++) {
-      const dot = document.createElement('button');
-      dot.className = 'dot' + (i === 0 ? ' active' : '');
-      dot.dataset.index = i;
-      dot.setAttribute('aria-label', `Перейти к карточке ${i + 1}`);
-      dot.addEventListener('click', function() {
-        const index = parseInt(this.dataset.index);
-        const card = container.querySelectorAll('.card')[index];
-        if (card) {
-          card.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'center'
-          });
-        }
-      });
-      dotsContainer.appendChild(dot);
-      dots.push(dot);
-    }
-
-    function updateActiveDot() {
-      const scrollLeft = container.scrollLeft;
+  if (container) {
+    // Функция прокрутки
+    function scrollCards(direction) {
       const cardWidth = container.querySelector('.card').offsetWidth + 24;
-      const activeIndex = Math.round(scrollLeft / cardWidth);
-      dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === activeIndex);
+      const scrollAmount = direction === 'next' ? cardWidth : -cardWidth;
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        scrollCards('prev');
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        scrollCards('next');
       });
     }
 
-    container.addEventListener('scroll', function() {
-      updateActiveDot();
-    });
+    // Индикаторы
+    if (dotsContainer) {
+      const cardCount = container.querySelectorAll('.card').length;
+      const dots = [];
 
-    window.addEventListener('resize', function() {
-      updateActiveDot();
-    });
+      for (let i = 0; i < cardCount; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.dataset.index = i;
+        dot.setAttribute('aria-label', `Перейти к карточке ${i + 1}`);
+        dot.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          const card = container.querySelectorAll('.card')[index];
+          if (card) {
+            card.scrollIntoView({
+              behavior: 'smooth',
+              block: 'nearest',
+              inline: 'center'
+            });
+          }
+        });
+        dotsContainer.appendChild(dot);
+        dots.push(dot);
+      }
 
-    // Инициализация
-    setTimeout(updateActiveDot, 100);
+      function updateActiveDot() {
+        const scrollLeft = container.scrollLeft;
+        const cardWidth = container.querySelector('.card').offsetWidth + 24;
+        const totalWidth = container.scrollWidth;
+        const visibleWidth = container.offsetWidth;
+
+        // Определяем индекс видимой карточки
+        let activeIndex = 0;
+        if (scrollLeft > 0) {
+          activeIndex = Math.round(scrollLeft / cardWidth);
+        }
+        // Ограничиваем, чтобы не выйти за пределы
+        const maxIndex = dots.length - 1;
+        activeIndex = Math.min(activeIndex, maxIndex);
+
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === activeIndex);
+        });
+      }
+
+      container.addEventListener('scroll', function() {
+        updateActiveDot();
+      });
+
+      window.addEventListener('resize', function() {
+        updateActiveDot();
+      });
+
+      // Инициализация
+      setTimeout(updateActiveDot, 100);
+    }
   }
 
   // ---------- КНОПКА "НАВЕРХ" ----------
