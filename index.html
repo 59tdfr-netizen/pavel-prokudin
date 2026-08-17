@@ -139,108 +139,112 @@
       </div>
     </section>
 
-    <!-- ЧТО ПОЧИТАТЬ? (КАРТОЧКИ-ФЛИПЫ) -->
-    <section id="what-to-read" class="section what-to-read fade-in">
-      <div class="section__inner">
-        <header class="section__header">
-          <span class="section__num">02</span>
-          <h2 class="section__title lang-ru">Что почитать?</h2>
-          <h2 class="section__title lang-en">What to read?</h2>
-        </header>
+   <!-- ЧТО ПОЧИТАТЬ? (КАРТОЧКИ-ФЛИПЫ) -->
+<section id="what-to-read" class="section what-to-read fade-in">
+  <div class="section__inner">
+    <header class="section__header">
+      <span class="section__num">02</span>
+      <h2 class="section__title lang-ru">Что почитать?</h2>
+      <h2 class="section__title lang-en">What to read?</h2>
+    </header>
 
-        <div class="cards-container" id="cardsContainer">
+    <div class="cards-wrapper">
+      <button class="carousel-arrow prev" id="prevArrow" aria-label="Предыдущая карточка">‹</button>
+      <button class="carousel-arrow next" id="nextArrow" aria-label="Следующая карточка">›</button>
 
-          <!-- КАРТОЧКА 1: ДЕЛО ТРУБА -->
-          <div class="card" data-index="0">
-            <div class="card-inner">
-              <div class="card-front">
-                <h3 class="card-title">Дело Труба</h3>
-                <p class="card-genre lang-ru">Рассказ</p>
-                <p class="card-genre lang-en">Short story</p>
-                <p class="card-desc lang-ru">Жилищно-коммунальная комедия</p>
-                <p class="card-desc lang-en">A housing-and-utilities comedy</p>
-                <p class="card-tagline lang-ru">Абсурдное событие, которое приводит к реальным последствиям</p>
-                <p class="card-tagline lang-en">An absurd event that leads to real consequences</p>
-                <p class="card-published lang-ru">Журнал «Юность», 2026</p>
-                <p class="card-published lang-en">"Yunost" magazine, 2026</p>
-                <div class="card-flip-hint">
-                  <span>Переверни, там текст</span>
-                  <span class="flip-arrow">↻</span>
-                </div>
-              </div>
-              <div class="card-back">
-                <div class="card-excerpt">
-                  <p>Первого октября между девятиэтажными братьями-домами по улице Пионерской образовался провал.</p>
-                  <p>Братья-дома эти появились тут еще в семидесятых и славились тем, что в них установили первые в городке лифты. Местные комсомольцы и пионеры специально доезжали до южной конечной остановки, чтобы покататься на беззащитных достижениях науки и техники. От такой нагрузки лифты потребовали скорейшего ремонта.</p>
-                </div>
-                <button class="card-flip-btn" aria-label="Перевернуть карточку">↻</button>
+      <div class="cards-container" id="cardsContainer">
+        <!-- КАРТОЧКА 1: ДЕЛО ТРУБА -->
+        <div class="card" data-index="0">
+          <div class="card-inner">
+            <div class="card-front">
+              <h3 class="card-title">Дело Труба</h3>
+              <p class="card-genre lang-ru">Рассказ</p>
+              <p class="card-genre lang-en">Short story</p>
+              <p class="card-desc lang-ru">Жилищно-коммунальная комедия</p>
+              <p class="card-desc lang-en">A housing-and-utilities comedy</p>
+              <p class="card-tagline lang-ru">Абсурдное событие, которое приводит к реальным последствиям</p>
+              <p class="card-tagline lang-en">An absurd event that leads to real consequences</p>
+              <p class="card-published lang-ru">Журнал «Юность», 2026</p>
+              <p class="card-published lang-en">"Yunost" magazine, 2026</p>
+              <div class="card-flip-hint">
+                <span>Переверни, там текст</span>
+                <span class="flip-arrow">↻</span>
               </div>
             </div>
-          </div>
-
-          <!-- КАРТОЧКА 2: КАК ПОНРАВИТЬСЯ ВАШЕМУ ОФИЦИАНТУ -->
-          <div class="card" data-index="1">
-            <div class="card-inner">
-              <div class="card-front">
-                <h3 class="card-title lang-ru">Как понравиться вашему официанту</h3>
-                <h3 class="card-title lang-en">How to Win Over Your Waiter</h3>
-                <p class="card-genre lang-ru">Роман</p>
-                <p class="card-genre lang-en">Novel</p>
-                <p class="card-desc lang-ru">Комедия в общепите</p>
-                <p class="card-desc lang-en">A catering comedy</p>
-                <p class="card-tagline lang-ru">Главный герой хочет дом на колесах, но понимает, что дом — там, где тебя ждут</p>
-                <p class="card-tagline lang-en">The protagonist wants a home on wheels, but realizes that home is where you are expected</p>
-                <p class="card-published lang-ru">Ищет издателя</p>
-                <p class="card-published lang-en">Seeking publisher</p>
-                <div class="card-flip-hint">
-                  <span>Переверни, там текст</span>
-                  <span class="flip-arrow">↻</span>
-                </div>
+            <div class="card-back">
+              <div class="card-excerpt">
+                <p>Первого октября между девятиэтажными братьями-домами по улице Пионерской образовался провал.</p>
+                <p>Братья-дома эти появились тут еще в семидесятых и славились тем, что в них установили первые в городке лифты. Местные комсомольцы и пионеры специально доезжали до южной конечной остановки, чтобы покататься на беззащитных достижениях науки и техники. От такой нагрузки лифты потребовали скорейшего ремонта.</p>
               </div>
-              <div class="card-back">
-                <div class="card-excerpt">
-                  <p>В школе все события обходили меня стороной. Разве что тот поход. Да и он неудачный. Ещё бы! Пятый класс, апрель, тепло, но не настолько, чтобы вода в реке успела нагреться. Нас катали на тарзанке. “Чтоб без прыжков”, — сказал чей-то папа. Вжух до середины реки и обратно. И так по очереди. На моей очереди тарзанка предательски промокла и оказалась скользкой. До середины реки я добрался уже на одной руке, декантация (это когда отделяют вино от осадка — узнал, пока гуглил все про официантов) второй стала вопросом времени. На развороте я прикинул свои шансы. Геометрию мы еще не проходили, да даже если бы и проходили — моя тройка вряд ли бы изменила картину мира. Разум пятиклассника просчитал, что добраться до финиша не представляется возможным, а контакт с водой выглядит неизбежным. Лучше нырнуть здесь, чем удариться ногами возле берега, подумал я, и вторая рука раскрылась, как бутончик тюльпана.</p>
-                </div>
-                <button class="card-flip-btn" aria-label="Перевернуть карточку">↻</button>
-              </div>
+              <button class="card-flip-btn" aria-label="Перевернуть карточку">↻</button>
             </div>
           </div>
-
-          <!-- КАРТОЧКА 3: ОБРАТНАЯ ГЕОДЕЗИЧЕСКАЯ ЗАДАЧА -->
-          <div class="card" data-index="2">
-            <div class="card-inner">
-              <div class="card-front">
-                <h3 class="card-title">Обратная геодезическая задача</h3>
-                <p class="card-genre lang-ru">Рассказ</p>
-                <p class="card-genre lang-en">Short story</p>
-                <p class="card-desc lang-ru">Производственная комедия</p>
-                <p class="card-desc lang-en">A workplace comedy</p>
-                <p class="card-tagline lang-ru">Главный герой среди абсурда на стройке понимает, что главная задача — найти свое место в жизни</p>
-                <p class="card-tagline lang-en">Amidst the absurdity of a construction site, the protagonist realizes the main task is to find his place in life</p>
-                <p class="card-published lang-ru">Контргазета «НАЛЁТ», 2026</p>
-                <p class="card-published lang-en">"NALET" newspaper, 2026</p>
-                <div class="card-flip-hint">
-                  <span>Переверни, там текст</span>
-                  <span class="flip-arrow">↻</span>
-                </div>
-              </div>
-              <div class="card-back">
-                <div class="card-excerpt">
-                  <p>Поднять руку было единственно-правильным решением. Ну и что, что выбирали лучших? Я, может быть, тоже лучший, но в другом…</p>
-                  <p>Расчет какой: если меня все-таки выберут, я попаду в группу с отличниками, и зачет по практике у меня в кармане. Точнее в зачетке, которая в кармане. А, не важно!</p>
-                  <p>Русский авось сработал. Не знаю, каким образом, но наш куратор выбрал именно меня в компанию к отличникам Саше и Андрею. Веселить их наверное. Или остальных рабочих веселить: куратор сказал, что контора серьезная.</p>
-                </div>
-                <button class="card-flip-btn" aria-label="Перевернуть карточку">↻</button>
-              </div>
-            </div>
-          </div>
-
         </div>
 
-        <div class="carousel-dots" id="carouselDots"></div>
+        <!-- КАРТОЧКА 2: КАК ПОНРАВИТЬСЯ ВАШЕМУ ОФИЦИАНТУ -->
+        <div class="card" data-index="1">
+          <div class="card-inner">
+            <div class="card-front">
+              <h3 class="card-title lang-ru">Как понравиться вашему официанту</h3>
+              <h3 class="card-title lang-en">How to Win Over Your Waiter</h3>
+              <p class="card-genre lang-ru">Роман</p>
+              <p class="card-genre lang-en">Novel</p>
+              <p class="card-desc lang-ru">Комедия в общепите</p>
+              <p class="card-desc lang-en">A catering comedy</p>
+              <p class="card-tagline lang-ru">Главный герой хочет дом на колесах, но понимает, что дом — там, где тебя ждут</p>
+              <p class="card-tagline lang-en">The protagonist wants a home on wheels, but realizes that home is where you are expected</p>
+              <p class="card-published lang-ru">Ищет издателя</p>
+              <p class="card-published lang-en">Seeking publisher</p>
+              <div class="card-flip-hint">
+                <span>Переверни, там текст</span>
+                <span class="flip-arrow">↻</span>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="card-excerpt">
+                <p>В школе все события обходили меня стороной. Разве что тот поход. Да и он неудачный. Ещё бы! Пятый класс, апрель, тепло, но не настолько, чтобы вода в реке успела нагреться. Нас катали на тарзанке. “Чтоб без прыжков”, — сказал чей-то папа. Вжух до середины реки и обратно. И так по очереди. На моей очереди тарзанка предательски промокла и оказалась скользкой. До середины реки я добрался уже на одной руке, декантация (это когда отделяют вино от осадка — узнал, пока гуглил все про официантов) второй стала вопросом времени. На развороте я прикинул свои шансы. Геометрию мы еще не проходили, да даже если бы и проходили — моя тройка вряд ли бы изменила картину мира. Разум пятиклассника просчитал, что добраться до финиша не представляется возможным, а контакт с водой выглядит неизбежным. Лучше нырнуть здесь, чем удариться ногами возле берега, подумал я, и вторая рука раскрылась, как бутончик тюльпана.</p>
+              </div>
+              <button class="card-flip-btn" aria-label="Перевернуть карточку">↻</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- КАРТОЧКА 3: ОБРАТНАЯ ГЕОДЕЗИЧЕСКАЯ ЗАДАЧА -->
+        <div class="card" data-index="2">
+          <div class="card-inner">
+            <div class="card-front">
+              <h3 class="card-title">Обратная геодезическая задача</h3>
+              <p class="card-genre lang-ru">Рассказ</p>
+              <p class="card-genre lang-en">Short story</p>
+              <p class="card-desc lang-ru">Производственная комедия</p>
+              <p class="card-desc lang-en">A workplace comedy</p>
+              <p class="card-tagline lang-ru">Главный герой среди абсурда на стройке понимает, что главная задача — найти свое место в жизни</p>
+              <p class="card-tagline lang-en">Amidst the absurdity of a construction site, the protagonist realizes the main task is to find his place in life</p>
+              <p class="card-published lang-ru">Контргазета «НАЛЁТ», 2026</p>
+              <p class="card-published lang-en">"NALET" newspaper, 2026</p>
+              <div class="card-flip-hint">
+                <span>Переверни, там текст</span>
+                <span class="flip-arrow">↻</span>
+              </div>
+            </div>
+            <div class="card-back">
+              <div class="card-excerpt">
+                <p>Поднять руку было единственно-правильным решением. Ну и что, что выбирали лучших? Я, может быть, тоже лучший, но в другом…</p>
+                <p>Расчет какой: если меня все-таки выберут, я попаду в группу с отличниками, и зачет по практике у меня в кармане. Точнее в зачетке, которая в кармане. А, не важно!</p>
+                <p>Русский авось сработал. Не знаю, каким образом, но наш куратор выбрал именно меня в компанию к отличникам Саше и Андрею. Веселить их наверное. Или остальных рабочих веселить: куратор сказал, что контора серьезная.</p>
+              </div>
+              <button class="card-flip-btn" aria-label="Перевернуть карточку">↻</button>
+            </div>
+          </div>
+        </div>
 
       </div>
-    </section>
+    </div>
+
+    <div class="carousel-dots" id="carouselDots"></div>
+
+  </div>
+</section>
 
     <!-- БЛОГ -->
     <section id="blog" class="section blog fade-in">
