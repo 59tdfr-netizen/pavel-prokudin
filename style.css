@@ -48,7 +48,6 @@ body.lang-ru {
 }
 body.lang-ru h1, body.lang-ru h2, body.lang-ru h3,
 body.lang-ru .hero__name, body.lang-ru .section__title,
-body.lang-ru .work__title, body.lang-ru .correspondence__thanks,
 body.lang-ru .card-title {
   font-family: 'Literata', serif;
 }
@@ -62,7 +61,6 @@ body.lang-en {
 }
 body.lang-en h1, body.lang-en h2, body.lang-en h3,
 body.lang-en .hero__name, body.lang-en .section__title,
-body.lang-en .work__title, body.lang-en .correspondence__thanks,
 body.lang-en .card-title {
   font-family: 'Newsreader', serif;
 }
@@ -465,8 +463,8 @@ img {
 
 .card {
   perspective: 1000px;
-  height: 400px;
-  cursor: pointer;
+  height: 420px;
+  cursor: default;
 }
 
 .card-inner {
@@ -495,7 +493,7 @@ img {
   border: 1px solid var(--lines);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .card-front {
@@ -699,7 +697,7 @@ body.dark-mode .correspondence__email a.email-link {
     grid-template-columns: repeat(2, 1fr);
   }
   .card {
-    height: 380px;
+    height: 400px;
   }
 }
 
@@ -769,7 +767,7 @@ body.dark-mode .correspondence__email a.email-link {
     flex: 0 0 85%;
     max-width: 85%;
     scroll-snap-align: center;
-    height: 380px;
+    height: 400px;
   }
   .carousel-dots {
     display: flex;
@@ -836,7 +834,6 @@ body.dark-mode .correspondence__email a.email-link {
     text-align: center;
   }
 
-  /* Карточки: уменьшаем размер на маленьких экранах */
   .card-front .card-title {
     font-size: 1.3rem;
   }
@@ -855,7 +852,7 @@ body.dark-mode .correspondence__email a.email-link {
   .card {
     flex: 0 0 92%;
     max-width: 92%;
-    height: 360px;
+    height: 380px;
   }
   .hero__name {
     font-size: 2.6rem;
@@ -874,7 +871,6 @@ body.dark-mode .correspondence__email a.email-link {
   }
 }
 
-/* Стили для тёмной темы внутри карточек */
 body.dark-mode .card-front,
 body.dark-mode .card-back {
   border-color: var(--lines);
