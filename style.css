@@ -453,7 +453,7 @@ img {
   margin-right: 0.4rem;
 }
 
-/* ---------- КАРТОЧКИ-ФЛИПЫ (НОВАЯ КАРУСЕЛЬ) ---------- */
+/* ---------- КАРТОЧКИ-ФЛИПЫ ---------- */
 .cards-wrapper {
   position: relative;
   overflow: hidden;
@@ -882,11 +882,11 @@ body.dark-mode .correspondence__email a.email-link {
     margin-left: 0.3rem;
   }
 
-  /* Карточки на мобильных — одна на экране */
+  /* КАРТОЧКИ НА МОБИЛЬНЫХ — УВЕЛИЧЕНА ВЫСОТА */
   .card {
     flex: 0 0 85%;
     max-width: 85%;
-    height: 520px;
+    height: 580px; /* было 520px */
   }
   .card:first-child {
     margin-left: 7.5%;
@@ -967,7 +967,7 @@ body.dark-mode .correspondence__email a.email-link {
   .card {
     flex: 0 0 92%;
     max-width: 92%;
-    height: 480px;
+    height: 540px; /* было 480px */
   }
   .card:first-child {
     margin-left: 4%;
