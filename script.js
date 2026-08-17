@@ -129,22 +129,41 @@ document.addEventListener('DOMContentLoaded', function() {
   const dotsContainer = document.getElementById('carouselDots');
 
   if (container) {
-    // Функция прокрутки
     function scrollCards(direction) {
       const cardWidth = container.querySelector('.card').offsetWidth + 24;
       const scrollAmount = direction === 'next' ? cardWidth : -cardWidth;
       container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
 
+    // Анимация при клике на стрелку
+    function animateArrow(btn) {
+      if (!btn) return;
+      btn.style.transition = 'transform 0.1s ease, color 0.1s ease, border-color 0.1s ease';
+      btn.style.transform = 'translateY(-50%) scale(0.9)';
+      btn.style.color = 'var(--accent)';
+      btn.style.borderColor = 'var(--accent)';
+      setTimeout(() => {
+        btn.style.transform = 'translateY(-50%) scale(1)';
+        btn.style.color = '';
+        btn.style.borderColor = '';
+        // Сброс transition после анимации
+        setTimeout(() => {
+          btn.style.transition = '';
+        }, 200);
+      }, 150);
+    }
+
     if (prevBtn) {
       prevBtn.addEventListener('click', function(e) {
         e.stopPropagation();
+        animateArrow(this);
         scrollCards('prev');
       });
     }
     if (nextBtn) {
       nextBtn.addEventListener('click', function(e) {
         e.stopPropagation();
+        animateArrow(this);
         scrollCards('next');
       });
     }
@@ -180,12 +199,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const totalWidth = container.scrollWidth;
         const visibleWidth = container.offsetWidth;
 
-        // Определяем индекс видимой карточки
         let activeIndex = 0;
         if (scrollLeft > 0) {
           activeIndex = Math.round(scrollLeft / cardWidth);
         }
-        // Ограничиваем, чтобы не выйти за пределы
         const maxIndex = dots.length - 1;
         activeIndex = Math.min(activeIndex, maxIndex);
 
@@ -202,7 +219,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateActiveDot();
       });
 
-      // Инициализация
       setTimeout(updateActiveDot, 100);
     }
   }
