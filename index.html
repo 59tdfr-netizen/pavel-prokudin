@@ -8,7 +8,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Павел Прокудин — писатель" />
-  <meta property="og:description" content="Павел Прокудин — писатель. Смешные истории о людях и их характерах." />
+  <meta property="og:description" content="Смешные истории о людях и их характерах." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://59tdfr-netizen.github.io/pavel-prokudin/" />
   <meta property="og:image" content="https://59tdfr-netizen.github.io/pavel-prokudin/assets/og-image.jpg" />
@@ -45,10 +45,9 @@
     <span class="hamburger__line"></span>
   </button>
 
-  <!-- Мобильное меню -->
+  <!-- Мобильное меню (без пункта "Содержание") -->
   <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <ul class="mobile-menu__list">
-      <li><a href="#contents"><span class="lang-ru">Содержание</span><span class="lang-en">Contents</span></a></li>
       <li><a href="#about"><span class="lang-ru">Обо мне</span><span class="lang-en">About</span></a></li>
       <li><a href="#what-to-read"><span class="lang-ru">Что почитать?</span><span class="lang-en">What to read?</span></a></li>
       <li><a href="#blog"><span class="lang-ru">Блог</span><span class="lang-en">Blog</span></a></li>
@@ -58,46 +57,37 @@
 
   <main>
 
-    <!-- HERO -->
+    <!-- HERO (новая композиция: текст + фото) -->
     <section id="hero" class="section hero fade-in">
       <div class="hero__inner">
-        <div class="hero__text">
-          <h1 class="hero__name">
-            <span class="lang-ru">Павел Прокудин</span>
-            <span class="lang-en">Pavel Prokudin</span>
-          </h1>
-          <p class="hero__role lang-ru">писатель</p>
-          <p class="hero__role lang-en">writer</p>
-          <p class="hero__tagline lang-ru">
-            Смешные истории о людях и их характерах.
-          </p>
-          <p class="hero__tagline lang-en">
-            Funny stories about people and their characters.
-          </p>
-          <a href="#contents" class="hero__cta" aria-label="Прокрутить к содержанию">
-            <span class="hero__arrow" aria-hidden="true">↓</span>
-            <span class="lang-ru">Читать</span>
-            <span class="lang-en">Read</span>
-          </a>
+        <div class="hero__content">
+          <div class="hero__text">
+            <h1 class="hero__name">
+              <span class="lang-ru">Павел Прокудин</span>
+              <span class="lang-en">Pavel Prokudin</span>
+            </h1>
+            <p class="hero__role lang-ru">писатель</p>
+            <p class="hero__role lang-en">writer</p>
+            <p class="hero__tagline lang-ru">
+              Смешные истории о людях и их характерах.
+            </p>
+            <p class="hero__tagline lang-en">
+              Funny stories about people and their characters.
+            </p>
+            <a href="#what-to-read" class="hero__cta" aria-label="Прокрутить к произведениям">
+              <span class="hero__arrow" aria-hidden="true">↓</span>
+              <span class="lang-ru">Читать</span>
+              <span class="lang-en">Read</span>
+            </a>
+          </div>
+          <figure class="hero__photo">
+            <img src="assets/photo.jpg" alt="Павел Прокудин, писатель" width="480" height="640" loading="lazy" onerror="this.onerror=null;this.src='assets/photo.svg'" />
+          </figure>
         </div>
       </div>
     </section>
 
-    <!-- ОГЛАВЛЕНИЕ -->
-    <section id="contents" class="section contents fade-in">
-      <div class="section__inner">
-        <h2 class="section__title lang-ru">Содержание</h2>
-        <h2 class="section__title lang-en">Contents</h2>
-        <ol class="toc">
-          <li class="toc__item"><a href="#about" class="toc__link"><span class="toc__num">01</span><span class="lang-ru">Обо мне</span><span class="lang-en">About</span></a></li>
-          <li class="toc__item"><a href="#what-to-read" class="toc__link"><span class="toc__num">02</span><span class="lang-ru">Что почитать?</span><span class="lang-en">What to read?</span></a></li>
-          <li class="toc__item"><a href="#blog" class="toc__link"><span class="toc__num">03</span><span class="lang-ru">Блог</span><span class="lang-en">Blog</span></a></li>
-          <li class="toc__item"><a href="#correspondence" class="toc__link"><span class="toc__num">04</span><span class="lang-ru">Корреспонденция</span><span class="lang-en">Correspondence</span></a></li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ОБО МНЕ -->
+    <!-- РАЗДЕЛ "ОБО МНЕ" (без изменений) -->
     <section id="about" class="section about fade-in">
       <div class="section__inner">
         <header class="section__header">
@@ -106,9 +96,6 @@
           <h2 class="section__title lang-en">About</h2>
         </header>
         <div class="about__layout">
-          <figure class="about__photo">
-            <img src="assets/photo.jpg" alt="Павел Прокудин, писатель" width="480" height="640" loading="lazy" onerror="this.onerror=null;this.src='assets/photo.svg'" />
-          </figure>
           <div class="about__interview">
             <article class="qa">
               <p class="qa__question lang-ru">О чём ваши тексты?</p>
@@ -133,7 +120,7 @@
       </div>
     </section>
 
-    <!-- ЧТО ПОЧИТАТЬ? -->
+    <!-- РАЗДЕЛ "ЧТО ПОЧИТАТЬ?" (КАРТОЧКИ-ФЛИПЫ) -->
     <section id="what-to-read" class="section what-to-read fade-in">
       <div class="section__inner">
         <header class="section__header">
@@ -142,75 +129,98 @@
           <h2 class="section__title lang-en">What to read?</h2>
         </header>
 
-        <!-- 1. Дело Труба -->
-        <article class="work">
-          <div class="work__header">
-            <span class="work__index">1</span>
-            <div class="work__meta">
-              <h3 class="work__title">Дело Труба</h3>
-              <p class="work__genre lang-ru">Рассказ</p>
-              <p class="work__genre lang-en">Short story</p>
+        <!-- КОНТЕЙНЕР КАРТОЧЕК -->
+        <div class="cards-container" id="cardsContainer">
+
+          <!-- КАРТОЧКА 1: ДЕЛО ТРУБА -->
+          <div class="card" data-index="0">
+            <div class="card-inner">
+              <!-- Лицевая сторона -->
+              <div class="card-front">
+                <h3 class="card-title">Дело Труба</h3>
+                <p class="card-genre lang-ru">Рассказ</p>
+                <p class="card-genre lang-en">Short story</p>
+                <p class="card-desc lang-ru">Жилищно-коммунальная комедия</p>
+                <p class="card-desc lang-en">A housing-and-utilities comedy</p>
+                <p class="card-tagline lang-ru">«Абсурдное событие, которое приводит к реальным последствиям»</p>
+                <p class="card-tagline lang-en">"An absurd event that leads to real consequences"</p>
+                <p class="card-published lang-ru">Журнал «Юность», 2026</p>
+                <p class="card-published lang-en">"Yunost" magazine, 2026</p>
+                <button class="card-flip-btn" aria-label="Перевернуть карточку">↻</button>
+              </div>
+              <!-- Обратная сторона -->
+              <div class="card-back">
+                <p class="card-excerpt">
+                  «Первого октября между девятиэтажными братьями-домами по улице Пионерской образовался провал.
+                  Братья-дома эти появились тут еще в семидесятых и славились тем, что в них установили первые в городке лифты. Местные комсомольцы и пионеры специально доезжали до южной конечной остановки, чтобы покататься на беззащитных достижениях науки и техники. От такой нагрузки лифты потребовали скорейшего ремонта.»
+                </p>
+                <button class="card-flip-btn" aria-label="Перевернуть карточку">↻</button>
+              </div>
             </div>
           </div>
-          <p class="work__desc lang-ru">Жилищно-коммунальная комедия, где, несмотря на абсурдный провал, который образуется между домами, люди продолжают жить, верить и даже строить отношения.</p>
-          <p class="work__desc lang-en">A housing-and-utilities comedy where, despite an absurd chasm opening between apartment buildings, people keep living, believing, and even falling in love.</p>
-          <p class="work__status lang-ru">
-            Опубликовано в журнале
-            <a href="https://unost.org/news/soderzhanie-iyulskogo-nomera-zhurnala-yunost-6/" target="_blank" rel="noopener noreferrer" class="btn btn--small">«Юность»</a>
-          </p>
-          <p class="work__status lang-en">
-            Published in the literary magazine
-            <a href="https://unost.org/news/soderzhanie-iyulskogo-nomera-zhurnala-yunost-6/" target="_blank" rel="noopener noreferrer" class="btn btn--small">"Yunost"</a>
-          </p>
-        </article>
 
-        <hr class="divider" />
-
-        <!-- 2. Как понравиться вашему официанту -->
-        <article class="work">
-          <div class="work__header">
-            <span class="work__index">2</span>
-            <div class="work__meta">
-              <h3 class="work__title lang-ru">Как понравиться вашему официанту</h3>
-              <h3 class="work__title lang-en">How to Win Over Your Waiter</h3>
-              <p class="work__genre lang-ru">Роман</p>
-              <p class="work__genre lang-en">Novel</p>
+          <!-- КАРТОЧКА 2: КАК ПОНРАВИТЬСЯ ВАШЕМУ ОФИЦИАНТУ -->
+          <div class="card" data-index="1">
+            <div class="card-inner">
+              <!-- Лицевая сторона -->
+              <div class="card-front">
+                <h3 class="card-title lang-ru">Как понравиться вашему официанту</h3>
+                <h3 class="card-title lang-en">How to Win Over Your Waiter</h3>
+                <p class="card-genre lang-ru">Роман</p>
+                <p class="card-genre lang-en">Novel</p>
+                <p class="card-desc lang-ru">Комедия в общепите</p>
+                <p class="card-desc lang-en">A catering comedy</p>
+                <p class="card-tagline lang-ru">«Главный герой хочет дом на колесах, но понимает, что дом — там, где тебя ждут»</p>
+                <p class="card-tagline lang-en">"The protagonist wants a home on wheels, but realizes that home is where you are expected"</p>
+                <p class="card-published lang-ru">Ищет издателя</p>
+                <p class="card-published lang-en">Seeking publisher</p>
+                <button class="card-flip-btn" aria-label="Перевернуть карточку">↻</button>
+              </div>
+              <!-- Обратная сторона -->
+              <div class="card-back">
+                <p class="card-excerpt">
+                  «В школе все события обходили меня стороной. Разве что тот поход. Да и он неудачный. Ещё бы! Пятый класс, апрель, тепло, но не настолько, чтобы вода в реке успела нагреться. Нас катали на тарзанке. “Чтоб без прыжков”, — сказал чей-то папа. Вжух до середины реки и обратно. И так по очереди. На моей очереди тарзанка предательски промокла и оказалась скользкой. До середины реки я добрался уже на одной руке, декантация (это когда отделяют вино от осадка — узнал, пока гуглил все про официантов) второй стала вопросом времени. На развороте я прикинул свои шансы. Геометрию мы еще не проходили, да даже если бы и проходили — моя тройка вряд ли бы изменила картину мира. Разум пятиклассника просчитал, что добраться до финиша не представляется возможным, а контакт с водой выглядит неизбежным. Лучше нырнуть здесь, чем удариться ногами возле берега, подумал я, и вторая рука раскрылась, как бутончик тюльпана.»
+                </p>
+                <button class="card-flip-btn" aria-label="Перевернуть карточку">↻</button>
+              </div>
             </div>
           </div>
-          <p class="work__desc lang-ru">Главный герой ищет свой дом. Только он думает, что это дом на колёсах, а жизнь ему говорит, что дом — это место, где тебя любят и ждут.</p>
-          <p class="work__desc lang-en">The protagonist is looking for a home. He thinks it’s a home on wheels, but life has other ideas: home is a place where you are loved and expected.</p>
-          <p class="work__status lang-ru">Ищет издателя.</p>
-          <p class="work__status lang-en">Currently seeking publication.</p>
-        </article>
 
-        <hr class="divider" />
-
-        <!-- 3. Обратная геодезическая задача -->
-        <article class="work">
-          <div class="work__header">
-            <span class="work__index">3</span>
-            <div class="work__meta">
-              <h3 class="work__title">Обратная геодезическая задача</h3>
-              <p class="work__genre lang-ru">Рассказ</p>
-              <p class="work__genre lang-en">Short story</p>
+          <!-- КАРТОЧКА 3: ОБРАТНАЯ ГЕОДЕЗИЧЕСКАЯ ЗАДАЧА -->
+          <div class="card" data-index="2">
+            <div class="card-inner">
+              <!-- Лицевая сторона -->
+              <div class="card-front">
+                <h3 class="card-title">Обратная геодезическая задача</h3>
+                <p class="card-genre lang-ru">Рассказ</p>
+                <p class="card-genre lang-en">Short story</p>
+                <p class="card-desc lang-ru">Производственная комедия</p>
+                <p class="card-desc lang-en">A workplace comedy</p>
+                <p class="card-tagline lang-ru">«Главный герой среди абсурда на стройке понимает, что главная задача — найти свое место в жизни»</p>
+                <p class="card-tagline lang-en">"Amidst the absurdity of a construction site, the protagonist realizes the main task is to find his place in life"</p>
+                <p class="card-published lang-ru">Контргазета «НАЛЁТ», 2026</p>
+                <p class="card-published lang-en">"NALET" newspaper, 2026</p>
+                <button class="card-flip-btn" aria-label="Перевернуть карточку">↻</button>
+              </div>
+              <!-- Обратная сторона -->
+              <div class="card-back">
+                <p class="card-excerpt">
+                  «Поднять руку было единственно-правильным решением. Ну и что, что выбирали лучших? Я, может быть, тоже лучший, но в другом… Расчет какой: если меня все-таки выберут, я попаду в группу с отличниками, и зачет по практике у меня в кармане. Точнее в зачетке, которая в кармане. А, не важно! Русский авось сработал. Не знаю, каким образом, но наш куратор выбрал именно меня в компанию к отличникам Саше и Андрею. Веселить их наверное. Или остальных рабочих веселить: куратор сказал, что контора серьезная.»
+                </p>
+                <button class="card-flip-btn" aria-label="Перевернуть карточку">↻</button>
+              </div>
             </div>
           </div>
-          <p class="work__desc lang-ru">Абсурдность всего происходящего на стройке, непонятные задания, греки-армяне, бригадир Сократ и приключенческий дух.</p>
-          <p class="work__desc lang-en">The absurdity of everything happening on a construction site, mysterious assignments, Greeks and Armenians, a foreman named Socrates, and a sense of adventure.</p>
-          <p class="work__status lang-ru">
-            Опубликовано в независимой газете
-            <a href="https://t.me/kontrgazeta_nalet" target="_blank" rel="noopener noreferrer" class="btn btn--small">«НАЛЁТ»</a>
-          </p>
-          <p class="work__status lang-en">
-            Published in the independent newspaper
-            <a href="https://t.me/kontrgazeta_nalet" target="_blank" rel="noopener noreferrer" class="btn btn--small">"NALET"</a>
-          </p>
-        </article>
+
+        </div>
+
+        <!-- ИНДИКАТОРЫ КАРУСЕЛИ (только на мобильных) -->
+        <div class="carousel-dots" id="carouselDots"></div>
 
       </div>
     </section>
 
-    <!-- БЛОГ -->
+    <!-- БЛОГ (без изменений) -->
     <section id="blog" class="section blog fade-in">
       <div class="section__inner">
         <header class="section__header">
@@ -229,7 +239,7 @@
       </div>
     </section>
 
-    <!-- КОРРЕСПОНДЕНЦИЯ (удалены фразы про выпуск) -->
+    <!-- КОРРЕСПОНДЕНЦИЯ (без изменений) -->
     <section id="correspondence" class="section correspondence fade-in">
       <div class="section__inner">
         <header class="section__header">
