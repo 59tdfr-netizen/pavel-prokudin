@@ -115,10 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleCard(card);
       });
     }
-    // Клик по карточке тоже переворачивает (на мобильных)
     card.addEventListener('click', function(e) {
       if (window.innerWidth < 768) {
-        // Игнорируем клики по кнопке, чтобы не срабатывало дважды
         if (e.target.closest('.card-flip-btn')) return;
         toggleCard(card);
       }
@@ -133,7 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const cardCount = container.querySelectorAll('.card').length;
     const dots = [];
 
-    // Создаём точки
     for (let i = 0; i < cardCount; i++) {
       const dot = document.createElement('button');
       dot.className = 'dot' + (i === 0 ? ' active' : '');
@@ -154,10 +151,9 @@ document.addEventListener('DOMContentLoaded', function() {
       dots.push(dot);
     }
 
-    // Обновляем активную точку при скролле
     function updateActiveDot() {
       const scrollLeft = container.scrollLeft;
-      const cardWidth = container.querySelector('.card').offsetWidth + 24; // + gap
+      const cardWidth = container.querySelector('.card').offsetWidth + 24;
       const activeIndex = Math.round(scrollLeft / cardWidth);
       dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === activeIndex);
@@ -170,7 +166,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    // Обновляем при изменении размера окна
     window.addEventListener('resize', function() {
       if (window.innerWidth < 768) {
         updateActiveDot();
