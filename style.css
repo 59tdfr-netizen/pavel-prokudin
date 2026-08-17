@@ -454,6 +454,11 @@ img {
 }
 
 /* ---------- КАРТОЧКИ-ФЛИПЫ (НОВАЯ КАРУСЕЛЬ) ---------- */
+.cards-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
 .cards-container {
   display: flex;
   overflow-x: auto;
@@ -473,23 +478,12 @@ img {
 }
 
 .card {
-  flex: 0 0 80%;
-  max-width: 80%;
-  scroll-snap-align: center;
+  flex: 0 0 calc(50% - 0.75rem);
+  max-width: calc(50% - 0.75rem);
+  scroll-snap-align: start;
   perspective: 1000px;
-  height: 580px;
+  height: 620px;
   cursor: default;
-  opacity: 0.6;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-.card:hover {
-  opacity: 1;
-}
-.card:first-child {
-  margin-left: 10%;
-}
-.card:last-child {
-  margin-right: 10%;
 }
 
 .card-inner {
@@ -629,6 +623,43 @@ img {
   transform: rotate(180deg) scale(1.1);
 }
 
+/* Стрелки навигации */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: var(--floating-bg);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid var(--lines);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: var(--text);
+  transition: background 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
+  box-shadow: var(--floating-shadow);
+  opacity: 0;
+}
+.carousel-arrow:hover {
+  background: var(--btn-bg);
+  transform: translateY(-50%) scale(1.05);
+}
+.cards-wrapper:hover .carousel-arrow {
+  opacity: 1;
+}
+.carousel-arrow.prev {
+  left: -10px;
+}
+.carousel-arrow.next {
+  right: -10px;
+}
+
 /* Индикаторы карусели */
 .carousel-dots {
   display: flex;
@@ -651,7 +682,7 @@ img {
   transform: scale(1.3);
 }
 
-/* ---------- ОБО МНЕ (фото слева, текст справа) ---------- */
+/* ---------- ОБО МНЕ (фото слева, текст справа, выравнивание по ширине) ---------- */
 .about__layout {
   display: flex;
   flex-direction: row;
@@ -681,7 +712,8 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: left;
+  text-align: justify;
+  text-justify: inter-word;
 }
 .about__text p {
   margin: 0 0 0.8rem 0;
@@ -689,6 +721,8 @@ img {
   line-height: 1.8;
   color: var(--text);
   max-width: 100%;
+  text-align: justify;
+  text-justify: inter-word;
 }
 .about__text p:last-child {
   margin-bottom: 0;
@@ -765,7 +799,9 @@ body.dark-mode .correspondence__email a.email-link {
     max-width: 40%;
   }
   .card {
-    height: 520px;
+    flex: 0 0 calc(50% - 0.75rem);
+    max-width: calc(50% - 0.75rem);
+    height: 560px;
   }
 }
 
@@ -834,22 +870,23 @@ body.dark-mode .correspondence__email a.email-link {
     object-fit: cover;
   }
   .about__text {
-    text-align: center;
+    text-align: justify;
   }
   .about__text p {
     max-width: 100%;
     margin-left: 0;
     font-size: 1rem;
+    text-align: justify;
   }
   .about__arrow-link {
     margin-left: 0.3rem;
   }
 
-  /* Карточки на мобильных */
+  /* Карточки на мобильных — одна на экране */
   .card {
     flex: 0 0 85%;
     max-width: 85%;
-    height: 480px;
+    height: 520px;
   }
   .card:first-child {
     margin-left: 7.5%;
@@ -859,6 +896,9 @@ body.dark-mode .correspondence__email a.email-link {
   }
   .carousel-dots {
     display: flex;
+  }
+  .carousel-arrow {
+    display: none;
   }
 
   .mobile-menu {
@@ -927,7 +967,7 @@ body.dark-mode .correspondence__email a.email-link {
   .card {
     flex: 0 0 92%;
     max-width: 92%;
-    height: 440px;
+    height: 480px;
   }
   .card:first-child {
     margin-left: 4%;
