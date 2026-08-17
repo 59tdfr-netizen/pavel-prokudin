@@ -482,7 +482,7 @@ img {
   max-width: calc(50% - 0.75rem);
   scroll-snap-align: start;
   perspective: 1000px;
-  height: 620px;
+  height: 540px;
   cursor: default;
 }
 
@@ -524,26 +524,26 @@ img {
 }
 
 .card-front .card-title {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin: 0 0 0.2rem;
   color: var(--text);
 }
 .card-front .card-genre {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--secondary);
   margin: 0 0 0.5rem;
 }
 .card-front .card-desc {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--secondary);
   margin: 0 0 0.3rem;
   font-style: italic;
 }
 .card-front .card-tagline {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text);
   margin: 0.3rem 0 0.5rem;
   line-height: 1.4;
@@ -583,7 +583,7 @@ img {
 .card-back .card-excerpt {
   flex: 1;
   overflow-y: auto;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.6;
   color: var(--text);
   text-align: justify;
@@ -642,13 +642,19 @@ img {
   cursor: pointer;
   font-size: 1.4rem;
   color: var(--text);
-  transition: background 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease, opacity 0.3s ease, color 0.2s ease, border-color 0.2s ease;
   box-shadow: var(--floating-shadow);
   opacity: 0;
 }
 .carousel-arrow:hover {
   background: var(--btn-bg);
   transform: translateY(-50%) scale(1.05);
+}
+.carousel-arrow:active {
+  transform: translateY(-50%) scale(0.9);
+  color: var(--accent);
+  border-color: var(--accent);
+  transition: transform 0.1s ease, color 0.1s ease, border-color 0.1s ease;
 }
 .cards-wrapper:hover .carousel-arrow {
   opacity: 1;
@@ -801,7 +807,7 @@ body.dark-mode .correspondence__email a.email-link {
   .card {
     flex: 0 0 calc(50% - 0.75rem);
     max-width: calc(50% - 0.75rem);
-    height: 560px;
+    height: 500px;
   }
 }
 
@@ -886,7 +892,7 @@ body.dark-mode .correspondence__email a.email-link {
   .card {
     flex: 0 0 85%;
     max-width: 85%;
-    height: 580px; /* было 520px */
+    height: 620px;
   }
   .card:first-child {
     margin-left: 7.5%;
@@ -967,7 +973,7 @@ body.dark-mode .correspondence__email a.email-link {
   .card {
     flex: 0 0 92%;
     max-width: 92%;
-    height: 540px; /* было 480px */
+    height: 580px;
   }
   .card:first-child {
     margin-left: 4%;
