@@ -86,6 +86,98 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // ---------- КАРТОЧКИ-ФЛИПЫ ----------
+  const cards = document.querySelectorAll('.card');
+  const isMobile = window.innerWidth < 768;
+
+  function toggleCard(card) {
+    card.classList.toggle('flipped');
+  }
+
+  // Десктоп: переворот по hover
+  if (!isMobile) {
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.classList.add('flipped');
+      });
+      card.addEventListener('mouseleave', function() {
+        this.classList.remove('flipped');
+      });
+    });
+  }
+
+  // Мобильные: переворот по клику на кнопку или на саму карточку
+  cards.forEach(card => {
+    const flipBtn = card.querySelector('.card-flip-btn');
+    if (flipBtn) {
+      flipBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleCard(card);
+      });
+    }
+    // Клик по карточке тоже переворачивает (на мобильных)
+    card.addEventListener('click', function(e) {
+      if (window.innerWidth < 768) {
+        // Игнорируем клики по кнопке, чтобы не срабатывало дважды
+        if (e.target.closest('.card-flip-btn')) return;
+        toggleCard(card);
+      }
+    });
+  });
+
+  // ---------- КАРУСЕЛЬ: ИНДИКАТОРЫ ----------
+  const container = document.querySelector('.cards-container');
+  const dotsContainer = document.getElementById('carouselDots');
+
+  if (container && dotsContainer) {
+    const cardCount = container.querySelectorAll('.card').length;
+    const dots = [];
+
+    // Создаём точки
+    for (let i = 0; i < cardCount; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.dataset.index = i;
+      dot.setAttribute('aria-label', `Перейти к карточке ${i + 1}`);
+      dot.addEventListener('click', function() {
+        const index = parseInt(this.dataset.index);
+        const card = container.querySelectorAll('.card')[index];
+        if (card) {
+          card.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center'
+          });
+        }
+      });
+      dotsContainer.appendChild(dot);
+      dots.push(dot);
+    }
+
+    // Обновляем активную точку при скролле
+    function updateActiveDot() {
+      const scrollLeft = container.scrollLeft;
+      const cardWidth = container.querySelector('.card').offsetWidth + 24; // + gap
+      const activeIndex = Math.round(scrollLeft / cardWidth);
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === activeIndex);
+      });
+    }
+
+    container.addEventListener('scroll', function() {
+      if (window.innerWidth < 768) {
+        updateActiveDot();
+      }
+    });
+
+    // Обновляем при изменении размера окна
+    window.addEventListener('resize', function() {
+      if (window.innerWidth < 768) {
+        updateActiveDot();
+      }
+    });
+  }
+
   // ---------- КНОПКА "НАВЕРХ" ----------
   const backToTopBtn = document.getElementById('back-to-top');
 
@@ -110,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // ---------- FADE-IN АНИМАЦИЯ ----------
+  // ---------- FADE-IN ----------
   const fadeElements = document.querySelectorAll('.fade-in');
   fadeElements.forEach((el, index) => {
     setTimeout(() => {
