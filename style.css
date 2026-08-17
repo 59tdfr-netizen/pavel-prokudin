@@ -392,10 +392,10 @@ img {
   justify-content: center;
 }
 .hero__photo {
-  flex: 1;
+  flex: 0 0 35%;
+  max-width: 35%;
   display: flex;
   align-items: stretch;
-  margin: 0;
 }
 .hero__photo img {
   width: 100%;
@@ -453,18 +453,43 @@ img {
   margin-right: 0.4rem;
 }
 
-/* ---------- КАРТОЧКИ-ФЛИПЫ (обновлённые) ---------- */
+/* ---------- КАРТОЧКИ-ФЛИПЫ (НОВАЯ КАРУСЕЛЬ) ---------- */
 .cards-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   gap: 1.5rem;
-  margin: 2rem 0;
+  padding: 0.5rem 0 1rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.cards-container::-webkit-scrollbar {
+  display: none;
+}
+.cards-container:active {
+  cursor: grabbing;
 }
 
 .card {
+  flex: 0 0 80%;
+  max-width: 80%;
+  scroll-snap-align: center;
   perspective: 1000px;
-  height: 520px;
+  height: 580px;
   cursor: default;
+  opacity: 0.6;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.card:hover {
+  opacity: 1;
+}
+.card:first-child {
+  margin-left: 10%;
+}
+.card:last-child {
+  margin-right: 10%;
 }
 
 .card-inner {
@@ -505,36 +530,36 @@ img {
 }
 
 .card-front .card-title {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
   margin: 0 0 0.2rem;
   color: var(--text);
 }
 .card-front .card-genre {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--secondary);
-  margin: 0 0 0.6rem;
+  margin: 0 0 0.5rem;
 }
 .card-front .card-desc {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--secondary);
-  margin: 0 0 0.4rem;
+  margin: 0 0 0.3rem;
   font-style: italic;
 }
 .card-front .card-tagline {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text);
-  margin: 0.4rem 0 0.6rem;
+  margin: 0.3rem 0 0.5rem;
   line-height: 1.4;
   border-left: 2px solid var(--accent);
   padding-left: 0.8rem;
 }
 .card-front .card-published {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--secondary);
-  margin: 0.4rem 0 0;
+  margin: 0.3rem 0 0;
   font-family: 'IBM Plex Mono', monospace;
 }
 
@@ -544,7 +569,7 @@ img {
   align-items: center;
   justify-content: flex-end;
   gap: 0.4rem;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--secondary);
   opacity: 0.6;
   font-family: 'Inter', sans-serif;
@@ -553,7 +578,7 @@ img {
   border-top: 1px solid var(--lines);
 }
 .card-flip-hint .flip-arrow {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   display: inline-block;
   transition: transform 0.3s ease;
 }
@@ -564,13 +589,13 @@ img {
 .card-back .card-excerpt {
   flex: 1;
   overflow-y: auto;
-  font-size: 0.95rem;
-  line-height: 1.7;
+  font-size: 0.9rem;
+  line-height: 1.6;
   color: var(--text);
   text-align: justify;
 }
 .card-back .card-excerpt p {
-  margin: 0 0 0.6rem 0;
+  margin: 0 0 0.4rem 0;
   text-indent: 1.5em;
   text-align: justify;
 }
@@ -584,7 +609,7 @@ img {
   right: 0.8rem;
   background: none;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   cursor: pointer;
   color: var(--secondary);
   padding: 0.4rem;
@@ -606,10 +631,10 @@ img {
 
 /* Индикаторы карусели */
 .carousel-dots {
-  display: none;
+  display: flex;
   justify-content: center;
   gap: 0.6rem;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 .carousel-dots .dot {
   width: 8px;
@@ -634,8 +659,8 @@ img {
   align-items: stretch;
 }
 .about__photo {
-  flex: 0 0 30%;
-  max-width: 30%;
+  flex: 0 0 35%;
+  max-width: 35%;
   display: flex;
   align-items: stretch;
 }
@@ -731,15 +756,16 @@ body.dark-mode .correspondence__email a.email-link {
 
 /* ---------- АДАПТИВНОСТЬ ---------- */
 @media (max-width: 1024px) {
-  .cards-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .card {
-    height: 480px;
+  .hero__photo {
+    flex: 0 0 40%;
+    max-width: 40%;
   }
   .about__photo {
-    flex: 0 0 35%;
-    max-width: 35%;
+    flex: 0 0 40%;
+    max-width: 40%;
+  }
+  .card {
+    height: 520px;
   }
 }
 
@@ -765,12 +791,15 @@ body.dark-mode .correspondence__email a.email-link {
     text-align: center;
   }
   .hero__photo {
-    max-height: 300px;
+    flex: 0 0 auto;
+    max-width: 100%;
     width: 100%;
+    max-height: 300px;
   }
   .hero__photo img {
-    object-fit: cover;
+    height: 100%;
     max-height: 300px;
+    object-fit: cover;
   }
   .hero__name {
     font-size: 3.2rem;
@@ -816,26 +845,17 @@ body.dark-mode .correspondence__email a.email-link {
     margin-left: 0.3rem;
   }
 
-  /* Карточки — карусель */
-  .cards-container {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    gap: 1.5rem;
-    padding: 0.5rem 0 1rem;
-    grid-template-columns: none;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .cards-container::-webkit-scrollbar {
-    display: none;
-  }
+  /* Карточки на мобильных */
   .card {
     flex: 0 0 85%;
     max-width: 85%;
-    scroll-snap-align: center;
-    height: 460px;
+    height: 480px;
+  }
+  .card:first-child {
+    margin-left: 7.5%;
+  }
+  .card:last-child {
+    margin-right: 7.5%;
   }
   .carousel-dots {
     display: flex;
@@ -890,16 +910,16 @@ body.dark-mode .correspondence__email a.email-link {
   }
 
   .card-front .card-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   .card-front .card-desc {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
   .card-front .card-tagline {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
   .card-back .card-excerpt {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -907,7 +927,13 @@ body.dark-mode .correspondence__email a.email-link {
   .card {
     flex: 0 0 92%;
     max-width: 92%;
-    height: 420px;
+    height: 440px;
+  }
+  .card:first-child {
+    margin-left: 4%;
+  }
+  .card:last-child {
+    margin-right: 4%;
   }
   .hero__name {
     font-size: 2.6rem;
