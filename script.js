@@ -94,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
     card.classList.toggle('flipped');
   }
 
-  // Десктоп: переворот по hover
   if (!isMobile) {
     cards.forEach(card => {
       card.addEventListener('mouseenter', function() {
@@ -106,7 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Мобильные: переворот по клику на кнопку или на саму карточку
   cards.forEach(card => {
     const flipBtn = card.querySelector('.card-flip-btn');
     if (flipBtn) {
@@ -118,6 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
     card.addEventListener('click', function(e) {
       if (window.innerWidth < 768) {
         if (e.target.closest('.card-flip-btn')) return;
+        if (e.target.closest('.card-flip-hint')) return;
         toggleCard(card);
       }
     });
@@ -161,16 +160,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     container.addEventListener('scroll', function() {
-      if (window.innerWidth < 768) {
-        updateActiveDot();
-      }
+      updateActiveDot();
     });
 
     window.addEventListener('resize', function() {
-      if (window.innerWidth < 768) {
-        updateActiveDot();
-      }
+      updateActiveDot();
     });
+
+    // Инициализация
+    setTimeout(updateActiveDot, 100);
   }
 
   // ---------- КНОПКА "НАВЕРХ" ----------
