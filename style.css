@@ -316,7 +316,7 @@ img {
   display: block;
 }
 
-/* ---------- КНОПКИ-ССЫЛКИ (для внешних ссылок) ---------- */
+/* ---------- КНОПКИ-ССЫЛКИ ---------- */
 .btn {
   display: inline-block;
   padding: 0.35rem 1rem;
@@ -372,7 +372,7 @@ img {
   color: var(--text);
 }
 
-/* ---------- HERO (НОВАЯ КОМПОЗИЦИЯ) ---------- */
+/* ---------- HERO ---------- */
 .hero {
   padding: 20px 0 40px;
 }
@@ -453,7 +453,7 @@ img {
   margin-right: 0.4rem;
 }
 
-/* ---------- КАРТОЧКИ-ФЛИПЫ ---------- */
+/* ---------- КАРТОЧКИ-ФЛИПЫ (ОБНОВЛЁННЫЕ) ---------- */
 .cards-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -504,6 +504,7 @@ img {
   z-index: 1;
 }
 
+/* Лицевая сторона — единое выравнивание */
 .card-front .card-title {
   font-size: 1.5rem;
   font-weight: 600;
@@ -515,18 +516,18 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--secondary);
-  margin: 0 0 0.8rem;
+  margin: 0 0 0.6rem;
 }
 .card-front .card-desc {
   font-size: 1rem;
   color: var(--secondary);
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.4rem;
   font-style: italic;
 }
 .card-front .card-tagline {
   font-size: 0.95rem;
   color: var(--text);
-  margin: 0.5rem 0 0.8rem;
+  margin: 0.4rem 0 0.6rem;
   line-height: 1.4;
   border-left: 2px solid var(--accent);
   padding-left: 0.8rem;
@@ -534,36 +535,51 @@ img {
 .card-front .card-published {
   font-size: 0.85rem;
   color: var(--secondary);
-  margin: auto 0 0;
+  margin: 0.4rem 0 0;
   font-family: 'IBM Plex Mono', monospace;
 }
 
-.card-back .card-excerpt {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--text);
-  margin: 0;
-  overflow-y: auto;
-  flex: 1;
+/* Подпись "Переверни, там текст" — прижимается к низу */
+.card-flip-hint {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--secondary);
+  opacity: 0.6;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.02em;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--lines);
 }
-.card-back .card-excerpt::before {
-  content: '"';
-  font-size: 2rem;
-  color: var(--accent);
-  line-height: 0.8;
-  display: block;
-  margin-bottom: 0.2rem;
+.card-flip-hint .flip-arrow {
+  font-size: 1.2rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
 }
-.card-back .card-excerpt::after {
-  content: '"';
-  font-size: 2rem;
-  color: var(--accent);
-  line-height: 0.8;
-  display: block;
-  text-align: right;
-  margin-top: 0.2rem;
+.card.flipped .card-flip-hint .flip-arrow {
+  transform: rotate(180deg);
 }
 
+/* Обратная сторона — текст с абзацами и отступами */
+.card-back .card-excerpt {
+  flex: 1;
+  overflow-y: auto;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+.card-back .card-excerpt p {
+  margin: 0 0 0.6rem 0;
+  text-indent: 1.5em;
+}
+.card-back .card-excerpt p:last-child {
+  margin-bottom: 0;
+}
+
+/* Кнопка переворота на обратной стороне */
 .card-flip-btn {
   position: absolute;
   bottom: 0.8rem;
@@ -715,7 +731,6 @@ body.dark-mode .correspondence__email a.email-link {
     font-size: 1.2rem;
   }
 
-  /* Hero — текст сверху, фото снизу */
   .hero__content {
     flex-direction: column;
     gap: 2rem;
@@ -748,7 +763,6 @@ body.dark-mode .correspondence__email a.email-link {
     font-size: 1rem;
   }
 
-  /* Карточки — карусель */
   .cards-container {
     display: flex;
     overflow-x: auto;
@@ -773,7 +787,6 @@ body.dark-mode .correspondence__email a.email-link {
     display: flex;
   }
 
-  /* About */
   .about__layout {
     flex-direction: column;
     gap: 2rem;
@@ -785,7 +798,6 @@ body.dark-mode .correspondence__email a.email-link {
     font-size: 1rem;
   }
 
-  /* Мобильное меню */
   .mobile-menu {
     width: 240px;
     padding: 80px 20px 20px;
